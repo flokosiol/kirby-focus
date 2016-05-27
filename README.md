@@ -1,6 +1,6 @@
-# Kirby 2 // Focus
+# Kirby 2 // Focus [BETA]
 
-With this plugin for [Kirby 2](http://getkirby.com) editors can add an individual focus point to any image. By using a special crop method developers can 
+With this plugin for [Kirby 2](http://getkirby.com) editors can set an individual focus point to any image, which can be considered when the image is cropped.
 
 ## Requirements
 
@@ -23,11 +23,15 @@ Otherwise you can download und unpack the zip file and put the `focus` folder in
 
 ## Usage
 
-Add the following line to your `config/config.php` file:
+### 1. Config
+
+Add the following line to your `config.php` file:
 
 ```
 c::set('thumbs.driver', 'focus');
 ```
+
+### 2. Blueprint
 
 Add the focus field to file fields of your blueprint and make sure to name it `focus` like this:
 
@@ -39,8 +43,17 @@ files:
       type: focus
 ```
 
+#### Optional setting
 
-Call the focusCrop method in your template:
+You can change the key of the focus field by adding the following to your `config.php`:
+
+```
+c::set('focus.field.key', 'betterfocuskey');
+```
+
+### 3. Template
+
+Call the `focusCrop` method in your template:
 
 ```
 <?php 
@@ -56,14 +69,4 @@ Call the focusCrop method in your template:
 
 ?>
 ```
-
-## Optional
-
-You can change the key of the focus field by adding the following to your `config.php`:
-
-```
-c::set('focus.field.key', 'betterfocuskey');
-```
-
-
 
