@@ -1,6 +1,6 @@
 # Kirby 2 // Focus [BETA]
 
-With this plugin for [Kirby 2](http://getkirby.com) editors can set an individual focus point to any image, which can be considered when the image is cropped.
+With this plugin for [Kirby 2](http://getkirby.com) you can set an individual focus point to any image, which can be considered when the image is cropped.
 
 ## Requirements
 
@@ -70,3 +70,8 @@ Call the `focusCrop` method in your template:
 ?>
 ```
 
+## Credits
+
+Special thanks to [Tamara Chahine](https://github.com/tamarasaurus). The js part of the focus field almost exactly her [focalpoint](https://github.com/tamarasaurus/focalpoint) script with some minor adjustments.
+
+Thanks to [Zac Sturgeon](https://unsplash.com/@zsturgeon64) and [Unsplash](https://unsplash.com) for the great [photo](https://unsplash.com/photos/kVlBvCsng-8).
