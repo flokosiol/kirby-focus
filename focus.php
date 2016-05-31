@@ -30,7 +30,7 @@ file::$methods['focusCrop'] = function($file, $width, $height = null, $quality =
 
   // determine aspect ratios
   $ratioSource = $file->height() / $file->width();
-  $ratioThumb = $height / $width;
+  $ratioThumb = $params['height'] / $params['width'];
 
   if ($ratioSource == $ratioThumb) {
     // no cropping, just resize 
