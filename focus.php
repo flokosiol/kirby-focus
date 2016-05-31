@@ -6,7 +6,7 @@
  * @package   Kirby CMS
  * @author    Flo Kosiol <git@flokosiol.de>
  * @link      http://flokosiol.de
- * @version   0.1.0
+ * @version   0.2
  */
 
 $kirby->set('field', 'focus', __DIR__ . DS . 'fields' . DS . 'focus');
@@ -129,7 +129,7 @@ thumb::$drivers['focus'] = function($thumb) {
       $y2 = $y1 + $height;
 
       // crop original image with thumb ratio and resize it to thumb dimensions
-      $img->crop($x1, $y1, $x2, $y2)->resize($thumb->options['width'], $thumb->options['height']);
+      $img->crop($x1, $y1, $x2, $y2)->thumbnail($thumb->options['width'], $thumb->options['height']);
     }
     else if ($thumb->options['crop']) {
       @$img->thumbnail($thumb->options['width'], $thumb->options['height']);
