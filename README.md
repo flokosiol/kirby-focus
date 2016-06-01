@@ -9,7 +9,7 @@ With this plugin for [Kirby 2](http://getkirby.com) you can set an individual fo
 
 ## Preview
 
-![Screenshot](screenshot.png)
+![Preview](preview.gif)
 
 ## Installation
 
@@ -37,8 +37,8 @@ Add the focus field to file fields of your blueprint and make sure to name it `f
 
 ```
 files:
-  fields: 
-    focus: 
+  fields:
+    focus:
       label: My Focus field
       type: focus
 ```
@@ -56,16 +56,16 @@ c::set('focus.field.key', 'betterfocuskey');
 Call the `focusCrop` method in your template:
 
 ```
-<?php 
+<?php
 
   // crop a square of 200px x 200px
-  echo $image->focusCrop(200); 
+  echo $image->focusCrop(200);
 
   // crop a rectangle of 300px x 200px
-  echo $image->focusCrop(300,200); 
+  echo $image->focusCrop(300,200);
 
   // crop a rectangle of 200px x 400px with a quality of 80%
-  echo $image->focusCrop(200,400,80); 
+  echo $image->focusCrop(200,400,80);
 
 ?>
 ```
