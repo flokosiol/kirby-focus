@@ -18,10 +18,10 @@ $kirby->set('field', 'focus', __DIR__ . DS . 'fields' . DS . 'focus');
 file::$methods['focusCrop'] = function($file, $width, $height = null, $quality = null) {
 
   // don't scale thumbs further down
-  if ($file->original()) {    
+  if ($file->original()) {
     throw new Exception('Thumbnails cannot be modified further');
   }
-  
+
   $params = array();
   $params['width'] = $width;
 
@@ -33,7 +33,7 @@ file::$methods['focusCrop'] = function($file, $width, $height = null, $quality =
   $ratioThumb = $params['height'] / $params['width'];
 
   if ($ratioSource == $ratioThumb) {
-    // no cropping, just resize 
+    // no cropping, just resize
     return $file->thumb($params);
   }
 
@@ -44,14 +44,14 @@ file::$methods['focusCrop'] = function($file, $width, $height = null, $quality =
     // full height, cropped width
     $params['fit'] = 'height';
   }
-  
+
   $params['focus'] = TRUE;
   $params['ratio'] = $ratioThumb;
 
   // center as default focus
   $params['focusX'] = 0.5;
   $params['focusY'] = 0.5;
-  
+
   // get name of the focus field
   $focusFieldKey = c::get('focus.field.key', 'focus');
 
@@ -81,18 +81,18 @@ thumb::$drivers['focus'] = function($thumb) {
     $img->quality = $thumb->options['quality'];
 
     if (isset($thumb->options['focus']) && isset($thumb->options['fit']) && isset($thumb->options['ratio']) && isset($thumb->options['focusX']) && isset($thumb->options['focusY'])) {
-      
+
       // get original image dimensions
       $dimensions = clone $thumb->source->dimensions();
 
       // calculate new height for original image based crop ratio
       if ($thumb->options['fit'] == 'width') {
         $width  = $dimensions->width();
-        $height = floor($dimensions->height() * $thumb->options['ratio']);
+        $height = floor($dimensions->width() * $thumb->options['ratio']);
 
         $heightHalf = floor($height / 2);
 
-        // calculate focus for original image 
+        // calculate focus for original image
         $focusX = floor($width * 0.5);
         $focusY = floor($dimensions->height() * $thumb->options['focusY']);
 
@@ -102,17 +102,17 @@ thumb::$drivers['focus'] = function($thumb) {
         // $x1 off canvas?
         $y1 = ($y1 < 0) ? 0 : $y1;
         $y1 = ($y1 + $height > $dimensions->height()) ? $dimensions->height() - $height : $y1;
-        
+
       }
 
       // calculate new width for original image based crop ratio
       if ($thumb->options['fit'] == 'height') {
-        $width  = $dimensions->width() / $thumb->options['ratio'];
+        $width  = $dimensions->height() / $thumb->options['ratio'];
         $height = $dimensions->height();
 
         $widthHalf = floor($width / 2);
 
-        // calculate focus for original image 
+        // calculate focus for original image
         $focusX = floor($dimensions->width() * $thumb->options['focusX']);
         $focusY = $height * 0.5;
 
@@ -122,7 +122,7 @@ thumb::$drivers['focus'] = function($thumb) {
         // $x1 off canvas?
         $x1 = ($x1 < 0) ? 0 : $x1;
         $x1 = ($x1 + $width > $dimensions->width()) ? $dimensions->width() - $width : $x1;
-        
+
       }
 
       $x2 = $x1 + $width;
@@ -150,7 +150,7 @@ thumb::$drivers['focus'] = function($thumb) {
 
     if ($thumb->options['autoOrient']) {
       $img->auto_orient();
-    }    
+    }
 
     @$img->save($thumb->destination->root);
   } catch(Exception $e) {
