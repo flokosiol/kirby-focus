@@ -9,6 +9,17 @@ div.focus-preview {
 img.focus-preview {
   display: block;
   width: 100%;
+  -webkit-transition: all .25s;
+     -moz-transition: all .25s;
+          transition: all .25s;
+  -webkit-filter: grayscale(100%);
+     -moz-filter: grayscale(100%);
+          filter: grayscale(100%);
+}
+div.focus-preview:hover img.focus-preview {
+  -webkit-filter: grayscale(0);
+     -moz-filter: grayscale(0);
+          filter: grayscale(0);
 }
 
 .focus-box {
