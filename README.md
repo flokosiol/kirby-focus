@@ -21,6 +21,12 @@ kirby plugin:install flokosiol/kirby-focus
 
 Otherwise you can download und unpack the zip file and put the `focus` folder into the `site/plugins` folder of your Kirby installation (create it, if it doesn't exist).
 
+Please make sure, that the plugin folder structure looks like this:
+
+```
+site/plugins/focus/
+```
+
 ## Usage
 
 ### 1. Config
