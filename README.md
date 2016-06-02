@@ -80,4 +80,6 @@ Call the `focusCrop` method in your template:
 
 Special thanks to [Tamara Chahine](https://github.com/tamarasaurus). The js part of the focus field almost exactly her [focalpoint](https://github.com/tamarasaurus/focalpoint) script with some minor adjustments.
 
+Also special thanks to [Thomas Günther](https://github.com/medienbaecker) for extensive testing and fighting against some issues. 
+
 Thanks to [Zac Sturgeon](https://unsplash.com/@zsturgeon64) and [Unsplash](https://unsplash.com) for the great [photo](https://unsplash.com/photos/kVlBvCsng-8).
