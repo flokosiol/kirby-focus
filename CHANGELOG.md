@@ -17,4 +17,5 @@
 
 + css improvements by @medienbaecker
 + some documentation changes
++ fix for cropping issues
 

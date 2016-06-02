@@ -6,10 +6,20 @@
  * @package   Kirby CMS
  * @author    Flo Kosiol <git@flokosiol.de>
  * @link      http://flokosiol.de
- * @version   0.2
+ * @version   0.3
  */
 
 $kirby->set('field', 'focus', __DIR__ . DS . 'fields' . DS . 'focus');
+
+/**
+ * Calculates the image ratio by dividing width / height
+ */
+function focusRatio($width, $height) {
+  if ($height === 0) {
+    return 0;
+  }
+  return $width / $height;
+}
 
 
 /**
@@ -29,8 +39,8 @@ file::$methods['focusCrop'] = function($file, $width, $height = null, $quality =
   $params['height'] = ($height) ? $height : $width;
 
   // determine aspect ratios
-  $ratioSource = $file->height() / $file->width();
-  $ratioThumb = $params['height'] / $params['width'];
+  $ratioSource = focusRatio($file->width(), $file->height());
+  $ratioThumb  = focusRatio($params['width'], $params['height']);
 
   if ($ratioSource == $ratioThumb) {
     // no cropping, just resize 
@@ -38,11 +48,9 @@ file::$methods['focusCrop'] = function($file, $width, $height = null, $quality =
   }
 
   if ($ratioThumb < $ratioSource) {
-    // full width, cropped height
-    $params['fit'] = 'width';
-  } else {
-    // full height, cropped width
     $params['fit'] = 'height';
+  } else {
+    $params['fit'] = 'width';
   }
   
   $params['focus'] = TRUE;
@@ -88,7 +96,7 @@ thumb::$drivers['focus'] = function($thumb) {
       // calculate new height for original image based crop ratio
       if ($thumb->options['fit'] == 'width') {
         $width  = $dimensions->width();
-        $height = floor($dimensions->height() * $thumb->options['ratio']);
+        $height = floor($dimensions->width() / $thumb->options['ratio']);
 
         $heightHalf = floor($height / 2);
 
@@ -107,7 +115,7 @@ thumb::$drivers['focus'] = function($thumb) {
 
       // calculate new width for original image based crop ratio
       if ($thumb->options['fit'] == 'height') {
-        $width  = $dimensions->width() / $thumb->options['ratio'];
+        $width  = $dimensions->height() * $thumb->options['ratio'];
         $height = $dimensions->height();
 
         $widthHalf = floor($width / 2);
