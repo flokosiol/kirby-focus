@@ -19,3 +19,9 @@
 + some documentation changes
 + fix for cropping issues
 
+## 0.4
+
+### Added
+
++ support for ImageMagick
+

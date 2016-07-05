@@ -5,7 +5,7 @@ With this plugin for [Kirby 2](http://getkirby.com) you can set an individual fo
 ## Requirements
 
 + Kirby CMS, Version **2.3+**
-+ GD Library
++ GD Library or ImageMagick
 
 ## Preview
 
@@ -31,10 +31,14 @@ site/plugins/focus/
 
 ### 1. Config
 
-Add the following line to your `config.php` file:
+Add one of the two following lines to your `config.php` file, depending on which Image Library you are using:
 
 ```
-c::set('thumbs.driver', 'focus');
+// GD
+c::set('thumbs.driver', 'focusGD');
+
+// ImageMagick
+c::set('thumbs.driver', 'focusIM');
 ```
 
 ### 2. Blueprint
