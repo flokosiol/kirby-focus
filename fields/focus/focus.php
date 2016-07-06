@@ -28,7 +28,7 @@ class FocusField extends InputField {
   // load current file
   public function file() {
     if (!empty(panel()->route->arguments[1])) {
-      $fileName = panel()->route->arguments[1];
+      $fileName = urldecode(panel()->route->arguments[1]);
       return $this->page()->file($fileName);
     }
     return NULL;
