@@ -1,27 +1,30 @@
 # Changelog
 
-## 0.2
+## 0.4
 
-### Added
+#### Added
 
-+ CHANGELOG.md
++ support for ImageMagick
 
-### Changed
+#### Changed
 
-+ fix to prevent thumbs from being squeezed
-
++ fix for an issue with filenames containing spaces
++ documentation changes
 
 ## 0.3
 
-### Changed
+#### Changed
 
 + css improvements by @medienbaecker
 + some documentation changes
 + fix for cropping issues
 
-## 0.4
+## 0.2
 
-### Added
+#### Added
 
-+ support for ImageMagick
++ CHANGELOG.md
 
+#### Changed
+
++ fix to prevent thumbs from being squeezed
