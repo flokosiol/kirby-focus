@@ -29,19 +29,7 @@ site/plugins/focus/
 
 ## Usage
 
-### 1. Config
-
-Add one of the two following lines to your `config.php` file, depending on which Image Library you are using:
-
-```
-// GD
-c::set('thumbs.driver', 'focusGD');
-
-// ImageMagick
-c::set('thumbs.driver', 'focusIM');
-```
-
-### 2. Blueprint
+### 1. Blueprint
 
 Add the focus field to file fields of your blueprint and make sure to name it `focus` like this:
 
@@ -61,7 +49,7 @@ You can change the key of the focus field by adding the following to your `confi
 c::set('focus.field.key', 'betterfocuskey');
 ```
 
-### 3. Template
+### 2. Template
 
 Call the `focusCrop` method in your template:
 
@@ -79,6 +67,10 @@ Call the `focusCrop` method in your template:
 
 ?>
 ```
+
+## Please notice
+
+Be aware that the plugin overrides the default thumbs driver for GD or ImageMagick as [described here](https://forum.getkirby.com/t/changing-toolkit-thumbs-drivers-scale-crop/2849/3?u=flokosiol).
 
 ## Credits
 

@@ -5,6 +5,7 @@
 #### Added
 
 + support for ImageMagick
++ overriding default gd or im driver instead of adding custom driver to config.php
 
 #### Changed
 

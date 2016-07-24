@@ -141,10 +141,9 @@ file::$methods['focusCrop'] = function($file, $width, $height = null, $quality =
 
 
 /**
- * Custom thumb driver based on GDLib Driver
+ * Overriding default GDLib Driver
  */
-thumb::$drivers['focusGD'] = function($thumb) {
-
+thumb::$drivers['gd'] = function($thumb) {
   try {
     $img = new abeautifulsite\SimpleImage($thumb->root());
     $img->quality = $thumb->options['quality'];
@@ -185,13 +184,13 @@ thumb::$drivers['focusGD'] = function($thumb) {
 };
 
 // keep backwards compatibility
-thumb::$drivers['focus'] = thumb::$drivers['focusGD'];
+thumb::$drivers['focus'] = thumb::$drivers['gd'];
 
 
 /**
- * Custom thumb driver based on ImageMagick Driver
+ * Overriding default ImageMagick Driver
  */
-thumb::$drivers['focusIM'] = function($thumb) {
+thumb::$drivers['im'] = function($thumb) {
   $command = array();
 
   $command[] = isset($thumb->options['bin']) ? $thumb->options['bin'] : 'convert';
@@ -216,9 +215,9 @@ thumb::$drivers['focusIM'] = function($thumb) {
     $focusCropValues = focusCropValues($thumb);
 
     // crop original image with thumb ratio and resize it to thumb dimensions
-    $command[] = '-gravity Center -crop ' . $focusCropValues['width'] . 'x' . $focusCropValues['height'] . '+' . $focusCropValues['x1'] . '+' . $focusCropValues['x2'];
+    $command[] = '-crop ' . $focusCropValues['width'] . 'x' . $focusCropValues['height'] . '+' . $focusCropValues['x1'] . '+' . $focusCropValues['y1'];
     $command[] =  '^';
-    $command[] = '-resize' . $thumb->options['width'] . 'x' . $thumb->options['height'];
+    $command[] = '-resize ' . $thumb->options['width'] . 'x' . $thumb->options['height'];
   }
   else if ($thumb->options['crop']) {
     $command[] = '-resize';
