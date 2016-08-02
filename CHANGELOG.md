@@ -5,6 +5,10 @@
 [o] changed  
 [–] removed  
 
+## 1.1
+
++ [o] fix for a tiny positioning issue of the panel focus point after saving
+
 ## 1.0
 
 + [o] documentation
