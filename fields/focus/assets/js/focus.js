@@ -11,11 +11,13 @@ var focalPoint = function (element, options) {
 
   // Click on container
   $(this.$element).on('click', $('img', this.$element), function (e) {
+    // Calculate focal point
     var pos = focalpoint.calculate($(focalpoint.$element).offset().top, $(focalpoint.$element).offset().left, e.clientY, e.clientX);
-    //Calculate and position focal point
-    $(options.point).offset({
-      top: pos.pos_y,
-      left: pos.pos_x
+    
+    // Relative positioning
+    $(options.point).css({
+      'left': pos.x * 100 + '%',
+      'top': pos.y * 100 + '%'
     });
 
     //Callback for position
