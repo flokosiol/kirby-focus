@@ -6,7 +6,7 @@
  * @package   Kirby CMS
  * @author    Flo Kosiol <git@flokosiol.de>
  * @link      http://flokosiol.de
- * @version   1.0
+ * @version   1.0.1
  */
 
 $kirby->set('field', 'focus', __DIR__ . DS . 'fields' . DS . 'focus');

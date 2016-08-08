@@ -5,7 +5,7 @@
 [o] changed  
 [–] removed  
 
-## 1.1
+## 1.0.1
 
 + [o] fix for a tiny positioning issue of the panel focus point after saving
 

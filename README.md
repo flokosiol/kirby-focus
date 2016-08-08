@@ -1,4 +1,6 @@
-# Kirby 2 // Focus
+# Kirby Focus
+
+![Version](https://img.shields.io/badge/version-1.0.1-green.svg)
 
 With this plugin for [Kirby 2](http://getkirby.com) you can prevent the most important part of an image from being cropped when creating automated thumbs.
 
