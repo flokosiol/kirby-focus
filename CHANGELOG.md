@@ -8,6 +8,7 @@
 ## 1.0.1
 
 + [o] fix for a tiny positioning issue of the panel focus point after saving
++ [o] restore max-width for focus preview field
 
 ## 1.0
 
