@@ -46,6 +46,15 @@ Please make sure, that the plugin folder structure looks like this:
 site/plugins/focus/
 ```
 
+### 3. Git Submodule
+
+If you want to add this plugin as a Git submodule.
+
+```
+$ cd your/project/root  
+$ git submodule add https://github.com/flokosiol/kirby-focus.git site/plugins/focus
+```
+
 ## Usage
 
 ### 1. Blueprint
@@ -71,10 +80,13 @@ c::set('focus.field.key', 'betterfocuskey');
 
 ### 2. Template
 
-Call the `focusCrop()` method in your template:
+Use the `focusCrop()` method in your template to get a complete `<img>` tag:
 
 ```
 <?php
+
+  // you need a Kirby image object like this
+  $image = $page->images()->first();
 
   // crop a square of 200px x 200px
   echo $image->focusCrop(200);
@@ -84,6 +96,17 @@ Call the `focusCrop()` method in your template:
 
   // crop a rectangle of 200px x 400px with a quality of 80%
   echo $image->focusCrop(200,400,80);
+
+?>
+```
+
+As with every Kirby **image object** you can use alle the known [methods](https://getkirby.com/docs/cheatsheet#file) like this:
+
+```
+<?php
+
+  $url = $image->focusCrop(200,300)->url();
+  $filename = $image->focusCrop(150)->filename();
 
 ?>
 ```
