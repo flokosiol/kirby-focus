@@ -88,7 +88,7 @@ function focusCropValues($thumb) {
  * Get the stored coordinates
  */
 function focusCoordinates($file, $axis = null) {  
-  $focusCoodinates = array(
+  $focusCoordinates = array(
     'x' => 0.5,
     'y' => 0.5,
   );
