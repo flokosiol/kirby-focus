@@ -1,6 +1,6 @@
 # Kirby Focus
 
-![Version](https://img.shields.io/badge/version-1.0.1-green.svg)
+![Version](https://img.shields.io/badge/version-1.0.2-green.svg)
 
 With this plugin for [Kirby 2](http://getkirby.com) you can prevent the most important part of an image from being cropped when creating automated thumbs.
 
@@ -107,6 +107,17 @@ As with every Kirby **image object** you can use alle the known [methods](https:
 
   $url = $image->focusCrop(200,300)->url();
   $filename = $image->focusCrop(150)->filename();
+
+?>
+```
+
+As of Version 1.0.2 you can also use the new helper methods to get the x and y values like this:
+
+```
+<?php
+
+  $x = $image->focusX();
+  $x = $image->focusY();
 
 ?>
 ```

@@ -6,7 +6,7 @@
  * @package   Kirby CMS
  * @author    Flo Kosiol <git@flokosiol.de>
  * @link      http://flokosiol.de
- * @version   1.0.1
+ * @version   1.0.2
  */
 
 $kirby->set('field', 'focus', __DIR__ . DS . 'fields' . DS . 'focus');
@@ -83,8 +83,49 @@ function focusCropValues($thumb) {
   );
 }
 
+
 /**
- * custom field method 'focus' (resize and crop with special focus)
+ * Get the stored coordinates
+ */
+function focusCoordinates($file, $axis = null) {  
+  $focusCoodinates = array(
+    'x' => 0.5,
+    'y' => 0.5,
+  );
+  
+  $focusFieldKey = c::get('focus.field.key', 'focus');
+
+  if ($file->$focusFieldKey()->isNotEmpty()) {
+    $focus = json_decode($file->$focusFieldKey()->value());
+    $focusCoordinates = array(
+      'x' => $focus->x,
+      'y' => $focus->y,
+    );
+  }
+
+  if (isset($axis) && isset($focusCoordinates[$axis])) {
+    return $focusCoordinates[$axis];
+  }
+
+  return $focusCoordinates;
+}
+
+
+/**
+ * Custom file methods to get the X and Y coordinate
+ */
+file::$methods['focusX'] = function($file) {
+  return focusCoordinates($file, 'x');
+};
+
+file::$methods['focusY'] = function($file) {
+  return focusCoordinates($file, 'y');
+};
+
+
+
+/**
+ * Custom file method 'focusCrop'
  */
 file::$methods['focusCrop'] = function($file, $width, $height = null, $quality = null) {
 
@@ -118,18 +159,8 @@ file::$methods['focusCrop'] = function($file, $width, $height = null, $quality =
   $params['ratio'] = $ratioThumb;
 
   // center as default focus
-  $params['focusX'] = 0.5;
-  $params['focusY'] = 0.5;
-  
-  // get name of the focus field
-  $focusFieldKey = c::get('focus.field.key', 'focus');
-
-  // get focus from image field
-  if ($file->$focusFieldKey()->isNotEmpty()) {
-    $focus = json_decode($file->$focusFieldKey()->value());
-    $params['focusX'] = $focus->x;
-    $params['focusY'] = $focus->y;
-  }
+  $params['focusX'] = focusCoordinates($file, 'x');
+  $params['focusY'] = focusCoordinates($file, 'y');
 
   $params['filename'] = '{safeName}-' . $params['width'] . 'x' . $params['height'] . '-' . $params['focusX']*100 . '-' . $params['focusY']*100 . '.{extension}';
 

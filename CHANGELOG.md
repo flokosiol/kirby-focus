@@ -5,11 +5,14 @@
 [o] changed  
 [–] removed  
 
+## 1.0.2
++ [+] new file method `focusX()` and `focusY()`
++ [o] documentation
+
 ## 1.0.1
 
 + [o] fix for a tiny positioning issue of the panel focus point after saving
 + [o] restore max-width for focus preview field
-+ [o] documentation
 
 ## 1.0
 
