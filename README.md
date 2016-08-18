@@ -100,7 +100,7 @@ Use the `focusCrop()` method in your template to get a complete `<img>` tag:
 ?>
 ```
 
-As with every Kirby **image object** you can use alle the known [methods](https://getkirby.com/docs/cheatsheet#file) like this:
+As with every Kirby **image object** you can use all the known [methods](https://getkirby.com/docs/cheatsheet#file) like this:
 
 ```
 <?php
