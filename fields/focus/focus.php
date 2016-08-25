@@ -36,8 +36,9 @@ class FocusField extends InputField {
 
   // decode stored value
   public function decoded() {
-    if (!empty($this->value())) {
-      return json_decode($this->value());
+    $value = $this->value();
+    if (!empty($value)) {
+      return json_decode($value);
     }
     return FALSE;
   }

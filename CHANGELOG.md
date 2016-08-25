@@ -7,6 +7,7 @@
 
 ## 1.0.2
 + [+] new file method `focusX()` and `focusY()`
++ [o] fix for a small php 5.4 issue
 + [o] documentation
 
 ## 1.0.1
