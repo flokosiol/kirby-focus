@@ -5,6 +5,9 @@
 [o] changed  
 [–] removed  
 
+## 1.1.0
++ [o] file and folder structure
+
 ## 1.0.2
 + [+] new file method `focusX()` and `focusY()`
 + [o] fix for a small php 5.4 issue
