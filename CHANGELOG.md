@@ -5,7 +5,8 @@
 [o] changed  
 [–] removed  
 
-## 1.1.0
+## 1.0.3
++ [o] focus class
 + [o] file and folder structure
 
 ## 1.0.2

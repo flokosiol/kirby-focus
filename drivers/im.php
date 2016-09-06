@@ -25,7 +25,7 @@ thumb::$drivers['im'] = function($thumb) {
   if (isset($thumb->options['focus']) && isset($thumb->options['fit']) && isset($thumb->options['ratio']) && isset($thumb->options['focusX']) && isset($thumb->options['focusY'])) {
 
     // calculate crop coordinates and width/height for the original image
-    $focusCropValues = focusCropValues($thumb);
+    $focusCropValues = focus::cropValues($thumb);
 
     // crop original image with thumb ratio and resize it to thumb dimensions
     $command[] = '-crop ' . $focusCropValues['width'] . 'x' . $focusCropValues['height'] . '+' . $focusCropValues['x1'] . '+' . $focusCropValues['y1'];

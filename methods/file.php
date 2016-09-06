@@ -1,16 +1,15 @@
 <?php
+
 /**
  * Custom file methods to get the X and Y coordinate
  */
 file::$methods['focusX'] = function($file) {
-  return focusCoordinates($file, 'x');
+  return focus::coordinates($file, 'x');
 };
 
 file::$methods['focusY'] = function($file) {
-  return focusCoordinates($file, 'y');
+  return focus::coordinates($file, 'y');
 };
-
-
 
 /**
  * Custom file method 'focusCrop'
@@ -29,8 +28,8 @@ file::$methods['focusCrop'] = function($file, $width, $height = null, $quality =
   $params['height'] = ($height) ? $height : $width;
 
   // determine aspect ratios
-  $ratioSource = focusRatio($file->width(), $file->height());
-  $ratioThumb  = focusRatio($params['width'], $params['height']);
+  $ratioSource = focus::ratio($file->width(), $file->height());
+  $ratioThumb  = focus::ratio($params['width'], $params['height']);
 
   if ($ratioSource == $ratioThumb) {
     // no cropping, just resize 
@@ -47,8 +46,8 @@ file::$methods['focusCrop'] = function($file, $width, $height = null, $quality =
   $params['ratio'] = $ratioThumb;
 
   // center as default focus
-  $params['focusX'] = focusCoordinates($file, 'x');
-  $params['focusY'] = focusCoordinates($file, 'y');
+  $params['focusX'] = focus::coordinates($file, 'x');
+  $params['focusY'] = focus::coordinates($file, 'y');
 
   $params['filename'] = '{safeName}-' . $params['width'] . 'x' . $params['height'] . '-' . $params['focusX']*100 . '-' . $params['focusY']*100 . '.{extension}';
 
