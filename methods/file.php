@@ -55,9 +55,9 @@ file::$methods['focusCrop'] = function($file, $width, $height = null, $quality =
   if ($quality) $params['quality'] = $quality;
   
   // convert localized floats
-  $params['ratio'] = str_replace(',', '.', $params['ratio']);
-  $params['focusX'] = str_replace(',', '.', $params['focusX']);
-  $params['focusY'] = str_replace(',', '.', $params['focusY']);
+  $params['ratio'] = focus::numberFormat($params['ratio']);
+  $params['focusX'] = focus::numberFormat($params['focusX']);
+  $params['focusY'] = focus::numberFormat($params['focusY']);
 
   return $file->thumb($params);
 };

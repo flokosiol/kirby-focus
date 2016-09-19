@@ -12,6 +12,13 @@ class Focus {
     return $width / $height;
   }
 
+  /**
+   * Correct format, even for localized floats
+   */
+  public static function numberFormat($number) {
+    return number_format($number,2,'.','');
+  }
+
 
   /**
    * Calculates crop coordinates and width/height to crop and resize the original image
@@ -60,16 +67,16 @@ class Focus {
       
     }
 
-    $x2 = $x1 + $width;
-    $y2 = $y1 + $height;
+    $x2 = floor($x1 + $width);
+    $y2 = floor($y1 + $height);
 
     return array(
       'x1' => $x1,
       'x2' => $x2,
       'y1' => $y1,
       'y2' => $y2,
-      'width' => $width,
-      'height' => $height,
+      'width' => floor($width),
+      'height' => floor($height),
     );
   }
 
@@ -88,8 +95,8 @@ class Focus {
     if ($file->$focusFieldKey()->isNotEmpty()) {
       $focus = json_decode($file->$focusFieldKey()->value());
       $focusCoordinates = array(
-        'x' => $focus->x,
-        'y' => $focus->y,
+        'x' => focus::numberFormat($focus->x),
+        'y' => focus::numberFormat($focus->y),
       );
     }
 
