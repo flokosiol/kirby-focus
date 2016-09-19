@@ -1,6 +1,6 @@
 # Kirby Focus
 
-![Version](https://img.shields.io/badge/Version-1.0.3-green.svg) ![Kirby](https://img.shields.io/badge/Kirby-2.3+-red.svg)
+![Version](https://img.shields.io/badge/Version-1.0.4-green.svg) ![Kirby](https://img.shields.io/badge/Kirby-2.3+-red.svg)
 
 With this plugin for [Kirby 2](http://getkirby.com) you can prevent the most important part of an image from being cropped when creating automated thumbs.
 
@@ -117,25 +117,9 @@ As of Version 1.0.2 you can also use the new helper methods to get the x and y v
 <?php
 
   $x = $image->focusX();
-  $x = $image->focusY();
+  $y = $image->focusY();
 
 ?>
-```
-
-## Details
-
-The x and y values are stored in the file meta field as JSON string, e.g.
-
-```
-Focus: {"x":0.42,"y":0.55}
-```
-
-If you want, you can get the values like this:
-
-```
-$focus = json_decode($file->focus()->value());
-$x = $focus->x;
-$y = $focus->y;
 ```
 
 

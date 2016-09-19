@@ -5,6 +5,10 @@
 [o] changed  
 [–] removed  
 
+## 1.0.4
++ [o] fix for localized floats
++ [o] documentation
+
 ## 1.0.3
 + [o] focus class
 + [o] file and folder structure

@@ -6,7 +6,7 @@
  * @package   Kirby CMS
  * @author    Flo Kosiol <git@flokosiol.de>
  * @link      http://flokosiol.de
- * @version   1.0.3
+ * @version   1.0.4
  */
 
 include __DIR__ . DS . 'core' . DS . 'focus.php';
