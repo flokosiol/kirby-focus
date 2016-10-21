@@ -14,14 +14,17 @@ file::$methods['focusY'] = function($file) {
 /**
  * Custom file method 'focusCrop'
  */
-file::$methods['focusCrop'] = function($file, $width, $height = null, $quality = null) {
+file::$methods['focusCrop'] = function($file, $width, $height = null, $params = array()) {
 
   // don't scale thumbs further down
   if ($file->original()) {    
     throw new Exception('Thumbnails cannot be modified further');
   }
   
-  $params = array();
+  if (!is_array($params)) {
+    $params = array();
+  }
+
   $params['width'] = $width;
 
   // if no height is given use width to crop a square
@@ -49,11 +52,8 @@ file::$methods['focusCrop'] = function($file, $width, $height = null, $quality =
   $params['focusX'] = focus::coordinates($file, 'x');
   $params['focusY'] = focus::coordinates($file, 'y');
 
-  $params['filename'] = '{safeName}-' . $params['width'] . 'x' . $params['height'] . '-' . $params['focusX']*100 . '-' . $params['focusY']*100 . '.{extension}';
+  $params['filename'] = '{safeName}-' . md5(serialize($params)) . '.{extension}';
 
-  // quality set?
-  if ($quality) $params['quality'] = $quality;
-  
   // convert localized floats
   $params['ratio'] = focus::numberFormat($params['ratio']);
   $params['focusX'] = focus::numberFormat($params['focusX']);
