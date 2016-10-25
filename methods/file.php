@@ -21,8 +21,14 @@ file::$methods['focusCrop'] = function($file, $width, $height = null, $params = 
     throw new Exception('Thumbnails cannot be modified further');
   }
   
+  // keep backwards compatibility with quality set as third argument
   if (!is_array($params)) {
-    $params = array();
+    if (is_numeric($params)) {
+      $params = array('quality' => $params);
+    }
+    else {
+      $params = array();
+    }
   }
 
   $params['width'] = $width;
