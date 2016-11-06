@@ -1,6 +1,6 @@
 # Kirby Focus
 
-![Version](https://img.shields.io/badge/Version-1.0.4-green.svg) ![Kirby](https://img.shields.io/badge/Kirby-2.3+-red.svg)
+![Version](https://img.shields.io/badge/Version-1.0.5-green.svg) ![Kirby](https://img.shields.io/badge/Kirby-2.3+-red.svg)
 
 With this plugin for [Kirby 2](http://getkirby.com) you can prevent the most important part of an image from being cropped when creating automated thumbs.
 
@@ -77,6 +77,12 @@ I recommend to keep the default field key, but if you like you are able to chang
 c::set('focus.field.key', 'betterfocuskey');
 ```
 
+If the default filename settings (considering dimensions, focus, quality, grayscale and blur) won't work for you, feel free to change it to the more flexible but less beatiful hash variant by adding the following line to your `config.php`:
+
+```
+c::set('focus.filename.hash', true);
+```
+
 
 ### 2. Template
 
@@ -95,7 +101,11 @@ Use the `focusCrop()` method in your template to get a complete `<img>` tag:
   echo $image->focusCrop(300,200);
 
   // crop a rectangle of 200px x 400px with a quality of 80%
-  echo $image->focusCrop(200,400,80);
+  echo $image->focusCrop(200,400,array('quality' => 80)));
+  
+  // crop a grayscale square of 300px x 300px
+  echo $image->focusCrop(300,300,array('blur' => true)));
+
 
 ?>
 ```

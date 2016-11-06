@@ -5,6 +5,10 @@
 [o] changed  
 [–] removed  
 
+## 1.0.5
++ [+] support for quality, blur and grayscale
++ [o] documentation
+
 ## 1.0.4
 + [o] fix for localized floats
 + [o] documentation

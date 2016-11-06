@@ -58,7 +58,32 @@ file::$methods['focusCrop'] = function($file, $width, $height = null, $params = 
   $params['focusX'] = focus::coordinates($file, 'x');
   $params['focusY'] = focus::coordinates($file, 'y');
 
-  $params['filename'] = '{safeName}-' . md5(serialize($params)) . '.{extension}';
+  // create base filename
+  $params['filename'] = '{safeName}-' . $params['width'] . 'x' . $params['height'] . '-' . $params['focusX']*100 . '-' . $params['focusY']*100;
+
+  // quality
+  if (isset($params['quality']) && is_numeric($params['quality'])) {
+    $params['filename'] .= '-q' . $params['quality'];
+  }
+
+  // blur
+  if (isset($params['blur']) && $params['blur'] === true) {
+    $params['filename'] .= '-blur';
+  }
+
+  // grayscale
+  if (isset($params['grayscale']) && $params['grayscale'] === true) {
+    $params['filename'] .= '-bw';
+  }
+
+  // add extension to filename
+  $params['filename'] .= '.{extension}';
+
+  // filename with hash
+  $hash = c::get('focus.filename.hash', false);
+  if ($hash) {
+    $params['filename'] = '{safeName}-' . md5(serialize($params)) . '.{extension}';
+  }
 
   // convert localized floats
   $params['ratio'] = focus::numberFormat($params['ratio']);
