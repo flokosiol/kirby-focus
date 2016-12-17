@@ -29,12 +29,11 @@ thumb::$drivers['im'] = function($thumb) {
 
     // crop original image with thumb ratio and resize it to thumb dimensions
     $command[] = '-crop ' . $focusCropValues['width'] . 'x' . $focusCropValues['height'] . '+' . $focusCropValues['x1'] . '+' . $focusCropValues['y1'];
-    $command[] =  '^';
-    $command[] = '-resize ' . $thumb->options['width'] . 'x' . $thumb->options['height'];
+    $command[] = '-resize "' . $thumb->options['width'] . 'x' . $thumb->options['height'] . '^"';
   }
   else if ($thumb->options['crop']) {
     $command[] = '-resize';
-    $command[] = $thumb->options['width'] . 'x' . $thumb->options['height'] . '^';
+    $command[] = '"' . $thumb->options['width'] . 'x' . $thumb->options['height'] . '^"';
     $command[] = '-gravity Center -crop ' . $thumb->options['width'] . 'x' . $thumb->options['height'] . '+0+0';
   } 
   else {
