@@ -6,7 +6,7 @@
  * @package   Kirby CMS
  * @author    Flo Kosiol <git@flokosiol.de>
  * @link      http://flokosiol.de
- * @version   1.0.5
+ * @version   1.0.6
  */
 
 class FocusField extends InputField {

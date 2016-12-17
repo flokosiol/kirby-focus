@@ -6,6 +6,10 @@
 [–] removed  
 
 ## 1.0.5
++ [o] fix for an issue with newer ImageMagick version
++ [o] port fix of original toolkit branch, see [this commit](https://github.com/getkirby/toolkit/commit/df299884a21bb1c3ffcca9f5c73c23d3561817ba)
+
+## 1.0.5
 + [+] support for quality, blur and grayscale
 + [o] documentation
 
