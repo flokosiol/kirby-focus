@@ -1,5 +1,4 @@
-// Thanks to ...
-// https://github.com/tamarasaurus/focalpoint
+/* Thanks to ... https://github.com/tamarasaurus/focalpoint */
 
 var focalPoint = function (element, options) {
   var focalpoint = this;
@@ -13,7 +12,7 @@ var focalPoint = function (element, options) {
   $(this.$element).on('click', $('img', this.$element), function (e) {
     // Calculate focal point
     var pos = focalpoint.calculate($(focalpoint.$element).offset().top, $(focalpoint.$element).offset().left, e.clientY, e.clientX);
-    
+
     // Relative positioning
     $(options.point).css({
       'left': pos.x * 100 + '%',
@@ -83,6 +82,3 @@ focalPoint.prototype = {
     });
   };
 }));
-
-
-
