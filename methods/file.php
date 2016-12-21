@@ -11,16 +11,26 @@ file::$methods['focusY'] = function($file) {
   return focus::coordinates($file, 'y');
 };
 
+file::$methods['focusPercentageX'] = function($file, $roundTo = 5) {
+	$focusX = focus::coordinates($file, 'x');
+	return ($roundTo * ceil($focusX*100 / $roundTo));
+};
+
+file::$methods['focusPercentageY'] = function($file, $roundTo = 5) {
+	$focusY = focus::coordinates($file, 'y');
+	return ($roundTo * ceil($focusY*100 / $roundTo));
+};
+
 /**
  * Custom file method 'focusCrop'
  */
 file::$methods['focusCrop'] = function($file, $width, $height = null, $params = array()) {
 
   // don't scale thumbs further down
-  if ($file->original()) {    
+  if ($file->original()) {
     throw new Exception('Thumbnails cannot be modified further');
   }
-  
+
   // keep backwards compatibility with quality set as third argument
   if (!is_array($params)) {
     if (is_numeric($params)) {
@@ -41,7 +51,7 @@ file::$methods['focusCrop'] = function($file, $width, $height = null, $params = 
   $ratioThumb  = focus::ratio($params['width'], $params['height']);
 
   if ($ratioSource == $ratioThumb) {
-    // no cropping, just resize 
+    // no cropping, just resize
     return $file->thumb($params);
   }
 
@@ -50,7 +60,7 @@ file::$methods['focusCrop'] = function($file, $width, $height = null, $params = 
   } else {
     $params['fit'] = 'width';
   }
-  
+
   $params['focus'] = TRUE;
   $params['ratio'] = $ratioThumb;
 
