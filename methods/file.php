@@ -11,12 +11,12 @@ file::$methods['focusY'] = function($file) {
   return focus::coordinates($file, 'y');
 };
 
-file::$methods['focusPercentageX'] = function($file, $roundTo = 5) {
+file::$methods['focusPercentageX'] = function($file, $roundTo = 1) {
 	$focusX = focus::coordinates($file, 'x');
 	return ($roundTo * ceil($focusX*100 / $roundTo));
 };
 
-file::$methods['focusPercentageY'] = function($file, $roundTo = 5) {
+file::$methods['focusPercentageY'] = function($file, $roundTo = 1) {
 	$focusY = focus::coordinates($file, 'y');
 	return ($roundTo * ceil($focusY*100 / $roundTo));
 };
