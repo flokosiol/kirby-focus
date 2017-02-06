@@ -86,8 +86,8 @@ class Focus {
    */
   public static function coordinates($file, $axis = null) {  
     $focusCoordinates = array(
-      'x' => 0.5,
-      'y' => 0.5,
+      'x' => focus::numberFormat(0.5),
+      'y' => focus::numberFormat(0.5),
     );
     
     $focusFieldKey = c::get('focus.field.key', 'focus');
