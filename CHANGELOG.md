@@ -1,9 +1,13 @@
 # Changelog
 
 
-[+] added  
-[o] changed  
-[–] removed  
+[+] added
+[o] changed
+[–] removed
+
+## 1.0.8
++ [+] possibility to force coordinates and override user input
++ [o] fix localized floats for default values
 
 ## 1.0.7
 + [+] new file methods `focusPercentageX()` and `focusPercentageY()`

@@ -64,9 +64,9 @@ file::$methods['focusCrop'] = function($file, $width, $height = null, $params = 
   $params['focus'] = TRUE;
   $params['ratio'] = $ratioThumb;
 
-  // center as default focus
-  $params['focusX'] = focus::coordinates($file, 'x');
-  $params['focusY'] = focus::coordinates($file, 'y');
+  // if forced coordinate is set, use it - otherwise look at file field values or use center as default
+  $params['focusX'] = (!empty($params['focusX'])) ? focus::numberFormat($params['focusX']) : focus::coordinates($file, 'x');
+  $params['focusY'] = (!empty($params['focusY'])) ? focus::numberFormat($params['focusY']) : focus::coordinates($file, 'x');
 
   // create base filename
   $params['filename'] = '{safeName}-' . $params['width'] . 'x' . $params['height'] . '-' . $params['focusX']*100 . '-' . $params['focusY']*100;

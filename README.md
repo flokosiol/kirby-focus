@@ -1,6 +1,6 @@
 # Kirby Focus
 
-![Version](https://img.shields.io/badge/Version-1.0.7-green.svg) ![Kirby](https://img.shields.io/badge/Kirby-2.3+-red.svg)
+![Version](https://img.shields.io/badge/Version-1.0.8-green.svg) ![Kirby](https://img.shields.io/badge/Kirby-2.3+-red.svg)
 
 With this plugin for [Kirby 2](http://getkirby.com) you can prevent the most important part of an image from being cropped when creating automated thumbs.
 
@@ -51,7 +51,7 @@ site/plugins/focus/
 If you want to add this plugin as a Git submodule.
 
 ```
-$ cd your/project/root  
+$ cd your/project/root
 $ git submodule add https://github.com/flokosiol/kirby-focus.git site/plugins/focus
 ```
 
@@ -101,11 +101,13 @@ Use the `focusCrop()` method in your template to get a complete `<img>` tag:
   echo $image->focusCrop(300,200);
 
   // crop a rectangle of 200px x 400px with a quality of 80%
-  echo $image->focusCrop(200,400,array('quality' => 80)));
-  
-  // crop a grayscale square of 300px x 300px
-  echo $image->focusCrop(300,300,array('blur' => true)));
+  echo $image->focusCrop(200,400,array('quality' => 80));
 
+  // crop a grayscale square of 300px x 300px
+  echo $image->focusCrop(300,300,array('blur' => true));
+
+  // crop a rectangle of 200px x 300px and force coordinates (overrides user input)
+  echo $image->focusCrop(200,300,array('focusX' => 0.3, 'focusY' => 0.6));
 
 ?>
 ```

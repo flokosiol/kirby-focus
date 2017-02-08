@@ -6,7 +6,7 @@
  * @package   Kirby CMS
  * @author    Flo Kosiol <git@flokosiol.de>
  * @link      http://flokosiol.de
- * @version   1.0.7
+ * @version   1.0.8
  */
 
 class FocusField extends InputField {
@@ -14,7 +14,7 @@ class FocusField extends InputField {
   public $type = 'focus';
   public $readonly = TRUE;
   public $decoded = FALSE;
-  
+
   // assets
   static public $assets = array(
     'js' => array(
@@ -74,7 +74,7 @@ class FocusField extends InputField {
     );
 
     $preview->html(tpl::load(__DIR__ . DS . 'template.php', $data));
-    
+
     return $preview;
   }
 
