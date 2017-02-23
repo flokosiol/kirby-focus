@@ -9,6 +9,8 @@
  * @version   1.0.8
  */
 
+use Kirby\Panel\Models\File;
+
 class FocusField extends InputField {
 
   public $type = 'focus';
@@ -28,8 +30,8 @@ class FocusField extends InputField {
   // load current file
   public function file() {
     if (!empty(panel()->route->arguments[1])) {
-      $fileName = urldecode(panel()->route->arguments[1]);
-      return $this->page()->file($fileName);
+      $filename = File::decodeFilename(panel()->route->arguments[1]);
+      return $this->page()->file($filename);
     }
     return NULL;
   }
