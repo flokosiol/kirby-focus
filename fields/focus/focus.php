@@ -84,6 +84,7 @@ class FocusField extends InputField {
   public function content() {
     $content = new Brick('div');
     $content->addClass('field-content');
+    $content->addClass('hidden');
     $content->attr('id','js-field-focus');
     $content->append($this->input());
     return $content;
