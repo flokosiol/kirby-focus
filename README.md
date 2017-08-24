@@ -104,7 +104,7 @@ Use the `focusCrop()` method in your template to get a complete `<img>` tag:
   echo $image->focusCrop(200,400,array('quality' => 80));
 
   // crop a grayscale square of 300px x 300px
-  echo $image->focusCrop(300,300,array('blur' => true));
+  echo $image->focusCrop(300,300,array('grayscale' => true));
 
   // crop a rectangle of 200px x 300px and force coordinates (overrides user input)
   echo $image->focusCrop(200,300,array('focusX' => 0.3, 'focusY' => 0.6));
