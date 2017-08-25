@@ -141,9 +141,9 @@ As mentioned by several people ([Matthias](https://forum.getkirby.com/t/focus-de
 
 
 ```
-<div style="background-image: url(<?php echo $image->url() ?>); background-size: cover; background-position: <?php echo $image->focusPercentageX() ?> <?php echo $image->focusPercentageX() ?>;"></div>
+<div style="background-image: url(<?php echo $image->url() ?>); background-size: cover; background-position: <?php echo $image->focusPercentageX() ?>% <?php echo $image->focusPercentageY() ?>%;"></div>
 
-<img src="<?php echo $image->url() ?>" style="object-fit: cover; object-position: <?php echo $image->focusPercentageX() ?> <?php echo $image->focusPercentageX() ?>;" />
+<img src="<?php echo $image->url() ?>" style="object-fit: cover; object-position: <?php echo $image->focusPercentageX() ?>% <?php echo $image->focusPercentageY() ?>%;" />
 
 ```
 
