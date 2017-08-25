@@ -28,7 +28,9 @@ Be aware that the plugin overrides the default thumbs driver for GD or ImageMagi
 
 ## Installation
 
-### 1. Kirby CLI
+Kirby Focus can be installed in different ways.
+
+### Kirby CLI
 
 If you are using the [Kirby CLI](https://github.com/getkirby/cli) you can install this plugin by running the following command in your shell from the root folder of your Kirby installation:
 
@@ -36,7 +38,7 @@ If you are using the [Kirby CLI](https://github.com/getkirby/cli) you can instal
 kirby plugin:install flokosiol/kirby-focus
 ```
 
-### 2. Download
+### Download
 
 Of course you can also download and unpack the zip file (or simply clone the repository). If necessary, rename the folder to `focus` and put it into `site/plugins` of your Kirby installation.
 
@@ -46,7 +48,7 @@ Please make sure, that the plugin folder structure looks like this:
 site/plugins/focus/
 ```
 
-### 3. Git Submodule
+### Git Submodule
 
 If you want to add this plugin as a Git submodule.
 
@@ -59,7 +61,7 @@ $ git submodule add https://github.com/flokosiol/kirby-focus.git site/plugins/fo
 
 ### 1. Blueprint
 
-Add the focus field to the **file fields** of your blueprint and make sure to name it `focus` like this:
+Add the focus field to the **file fields** (!) of your blueprint and make sure to name it `focus` like this:
 
 ```
 files:
@@ -71,7 +73,7 @@ files:
 
 #### Optional setting
 
-I recommend to keep the default field key, but if you like you are able to change it by adding the following line to your `config.php`:
+I recommend to keep the default field key. Nevertheless you are able to change it by adding the following line to your `config.php`:
 
 ```
 c::set('focus.field.key', 'betterfocuskey');
@@ -90,7 +92,6 @@ Use the `focusCrop()` method in your template to get a complete `<img>` tag:
 
 ```
 <?php
-
   // you need a Kirby image object like this
   $image = $page->images()->first();
 
@@ -104,11 +105,10 @@ Use the `focusCrop()` method in your template to get a complete `<img>` tag:
   echo $image->focusCrop(200,400,array('quality' => 80));
 
   // crop a grayscale square of 300px x 300px
-  echo $image->focusCrop(300,300,array('grayscale' => true));
+  echo $image->focusCrop(300,300,['grayscale' => true]);
 
   // crop a rectangle of 200px x 300px and force coordinates (overrides user input)
-  echo $image->focusCrop(200,300,array('focusX' => 0.3, 'focusY' => 0.6));
-
+  echo $image->focusCrop(200,300,['focusX' => 0.3, 'focusY' => 0.6]);
 ?>
 ```
 
@@ -116,23 +116,47 @@ As with every Kirby **image object** you can use all the known [methods](https:/
 
 ```
 <?php
-
   $url = $image->focusCrop(200,300)->url();
   $filename = $image->focusCrop(150)->filename();
-
 ?>
 ```
 
-As of Version 1.0.2 you can also use the new helper methods to get the x and y values like this:
+### Some more stuff …
+
+The plugin comes with some helper methods to get the x and y coordinates as floats or percentage values.
 
 ```
 <?php
-
   $x = $image->focusX();
   $y = $image->focusY();
-
+  
+  $x = $image->focusPercentageX();
+  $y = $image->focusPercentageY();
 ?>
 ```
+
+### Focus (without cropping) 
+
+As mentioned by several people ([Matthias](https://forum.getkirby.com/t/focus-define-an-image-focus-point/4249/11?u=flokosiol), [Guillaume](https://forum.getkirby.com/t/focus-define-an-image-focus-point/4249/53?u=flokosiol) and [Ola](https://forum.getkirby.com/t/focus-define-an-image-focus-point/4249/71?u=flokosiol)) the plugin can also be used to set a custom background position without cropping the image.
+
+
+```
+<div style="background-image: url(<?php echo $image->url() ?>); background-size: cover; background-position: <?php echo $image->focusPercentageX() ?> <?php echo $image->focusPercentageX() ?>;"></div>
+
+<img src="<?php echo $image->url() ?>" style="object-fit: cover; object-position: <?php echo $image->focusPercentageX() ?> <?php echo $image->focusPercentageX() ?>;" />
+
+```
+
+## Extensions
+
+### Autofocus
+
+[Sylvain](https://github.com/sylvainjule) created the first Focus extension. Make sure to check it out!
+
+> This plugin acts as a JS image.upload / image.replace hook, processing the / each image with the focus component, determining its appropriate focus point and saving it to the meta data file.
+
+[https://github.com/sylvainjule/kirby-autofocus](https://github.com/sylvainjule/kirby-autofocus)
+
 
 
 ## Credits
