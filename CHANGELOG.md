@@ -5,6 +5,10 @@
 [o] changed
 [–] removed
 
+## 1.0.10
++ [o] fixes a small css issue
++ [+] fullwidth option for focus preview field
+
 ## 1.0.9
 + [o] fixes filename decoding for php cli-server
 + [o] fixes x/y coordinate copy and paste issue for v1.0.8

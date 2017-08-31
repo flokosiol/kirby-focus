@@ -6,7 +6,7 @@
  * @package   Kirby CMS
  * @author    Flo Kosiol <git@flokosiol.de>
  * @link      http://flokosiol.de
- * @version   1.0.9
+ * @version   1.0.10
  */
 
 use Kirby\Panel\Models\File;
@@ -66,7 +66,11 @@ class FocusField extends InputField {
   // preview image
   public function preview() {
     $preview = new Brick('div');
-    $preview->addClass('focus-preview');
+    $preview->addClass('focus-preview-wrapper');
+
+    if (c::get('focus.field.fullwidth', false)) {
+      $preview->addClass('focus-preview-wrapper--fullwidth');
+    }
 
     $data = array(
       'field' => $this,

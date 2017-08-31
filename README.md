@@ -1,6 +1,6 @@
 # Kirby Focus
 
-![Version](https://img.shields.io/badge/Version-1.0.9-green.svg) ![Kirby](https://img.shields.io/badge/Kirby-2.3+-red.svg)
+![Version](https://img.shields.io/badge/Version-1.0.10-green.svg) ![Kirby](https://img.shields.io/badge/Kirby-2.3+-red.svg)
 
 With this plugin for [Kirby 2](http://getkirby.com) you can prevent the most important part of an image from being cropped when creating automated thumbs.
 
@@ -79,6 +79,13 @@ I recommend to keep the default field key. Nevertheless you are able to change i
 c::set('focus.field.key', 'betterfocuskey');
 ```
 
+The focus field has a maximum width of 300px. If you prefer to go fullwidth, you can add this to your `
+config.php`:
+
+```
+c::set('focus.field.fullwidth', true);
+```
+
 If the default filename settings (considering dimensions, focus, quality, grayscale and blur) won't work for you, feel free to change it to the more flexible but less beatiful hash variant by adding the following line to your `config.php`:
 
 ```
@@ -129,13 +136,13 @@ The plugin comes with some helper methods to get the x and y coordinates as floa
 <?php
   $x = $image->focusX();
   $y = $image->focusY();
-  
+
   $x = $image->focusPercentageX();
   $y = $image->focusPercentageY();
 ?>
 ```
 
-### Focus (without cropping) 
+### Focus (without cropping)
 
 As mentioned by several people ([Matthias](https://forum.getkirby.com/t/focus-define-an-image-focus-point/4249/11?u=flokosiol), [Guillaume](https://forum.getkirby.com/t/focus-define-an-image-focus-point/4249/53?u=flokosiol) and [Ola](https://forum.getkirby.com/t/focus-define-an-image-focus-point/4249/71?u=flokosiol)) the plugin can also be used to set a custom background position without cropping the image.
 
