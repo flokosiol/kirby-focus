@@ -34,17 +34,17 @@ class Focus {
 
       $heightHalf = floor($height / 2);
 
-      // calculate focus for original image 
+      // calculate focus for original image
       $focusX = floor($width * 0.5);
       $focusY = floor($dimensions->height() * $thumb->options['focusY']);
 
       $x1 = 0;
       $y1 = $focusY - $heightHalf;
 
-      // $x1 off canvas?
+      // $y1 off canvas?
       $y1 = ($y1 < 0) ? 0 : $y1;
       $y1 = ($y1 + $height > $dimensions->height()) ? $dimensions->height() - $height : $y1;
-      
+
     }
 
     // calculate new width for original image based crop ratio
@@ -54,7 +54,7 @@ class Focus {
 
       $widthHalf = floor($width / 2);
 
-      // calculate focus for original image 
+      // calculate focus for original image
       $focusX = floor($dimensions->width() * $thumb->options['focusX']);
       $focusY = $height * 0.5;
 
@@ -64,7 +64,7 @@ class Focus {
       // $x1 off canvas?
       $x1 = ($x1 < 0) ? 0 : $x1;
       $x1 = ($x1 + $width > $dimensions->width()) ? $dimensions->width() - $width : $x1;
-      
+
     }
 
     $x2 = floor($x1 + $width);
@@ -84,12 +84,12 @@ class Focus {
   /**
    * Get the stored coordinates
    */
-  public static function coordinates($file, $axis = null) {  
+  public static function coordinates($file, $axis = null) {
     $focusCoordinates = array(
       'x' => focus::numberFormat(0.5),
       'y' => focus::numberFormat(0.5),
     );
-    
+
     $focusFieldKey = c::get('focus.field.key', 'focus');
 
     if ($file->$focusFieldKey()->isNotEmpty()) {
