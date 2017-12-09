@@ -45,14 +45,10 @@ panel.field('focus', {
   },
   template: `
     <kirby-field class="kirby-focus-field" :label="label" :required="required" :readonly="readonly" :name="name">
-
       <div class="focus-box">
         <img class="focus-preview" :src="image" @click="setFocus" />
         <div class="focus-point" :style="style"></div>
       </div>
-
-      <input readonly class="focus-values" :value="json">
-
     </kirby-field>
   `
 });
