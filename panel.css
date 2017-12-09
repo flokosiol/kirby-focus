@@ -1,20 +1,12 @@
-.focus-values {
-  /*display: none;*/
-}
-
-.focus-wrapper {
+.kirby-focus-field .focus-box {
+  position: relative;
+  cursor: crosshair;
+  line-height: 0;
   overflow: hidden;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIE1hY2ludG9zaCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpCOTdEOEI3OUE3MDMxMUUzOEIxNEZERTM0N0EzRjlGMSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpCOTdEOEI3QUE3MDMxMUUzOEIxNEZERTM0N0EzRjlGMSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkI5N0Q4Qjc3QTcwMzExRTM4QjE0RkRFMzQ3QTNGOUYxIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkI5N0Q4Qjc4QTcwMzExRTM4QjE0RkRFMzQ3QTNGOUYxIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+jGcG/wAAAAlQTFRF////zMzMzc3NCvMx6wAAACJJREFUeNpiYGRkYgQBBhgYIAGEBCO6SpIFmKCADDMAAgwATVgAkU8MrdIAAAAASUVORK5CYII=);
 }
 
-.focus-box {
-  position: relative;
-  display: block;
-  cursor: crosshair;
-  line-height: 0;
-}
-
-.focus-preview {
+.kirby-focus-field .focus-preview {
   display: block;
   width: 100%;
   height: auto;
@@ -25,13 +17,13 @@
      -moz-filter: grayscale(100%);
           filter: grayscale(100%);
 }
-.focus-wrapper:hover .focus-preview {
+.kirby-focus-field .focus-box:hover .focus-preview {
   -webkit-filter: grayscale(0);
      -moz-filter: grayscale(0);
           filter: grayscale(0);
 }
 
-.focus-point {
+.kirby-focus-field .focus-point {
   box-sizing: border-box;
   min-height: 40px;
   min-width: 40px;
@@ -50,12 +42,12 @@
           transition: all .1s;
 }
 
-.focus-box:hover .focus-point {
+.kirby-focus-field .focus-box:hover .focus-point {
   background: rgba(0,0,0,0.5);
 }
 
-.focus-point:before,
-.focus-point:after {
+.kirby-focus-field .focus-point:before,
+.kirby-focus-field .focus-point:after {
   content: '';
   display: block;
   width: 5px;
@@ -66,7 +58,7 @@
   left: 16px;
 }
 
-.focus-point:after {
+.kirby-focus-field .focus-point:after {
   width: 1px;
   height: 5px;
   top: 15px;
