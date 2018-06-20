@@ -103,7 +103,7 @@ class FocusField extends InputField {
     }
 
     // file can't have thumb
-    if ($this->file() && !$this->file()->canHaveThumb()) {
+    if ($this->file() && $this->file()->type() != 'image') {
       return FALSE;
     }
 
