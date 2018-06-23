@@ -2,7 +2,7 @@
   "name": "focus",
   "description": "Image focus for Kirby CMS",
   "author": "Flo Kosiol <git@flokosiol.de>",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "type": "kirby-plugin",
   "license": "MIT"
 }

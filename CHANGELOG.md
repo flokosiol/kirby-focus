@@ -5,6 +5,9 @@
 [o] changed
 [–] removed
 
+## 1.0.11
++ [o] changes the way to detect if file is an image
+
 ## 1.0.10
 + [o] fixes a small css issue
 + [+] fullwidth option for focus preview field

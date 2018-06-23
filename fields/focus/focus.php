@@ -6,7 +6,7 @@
  * @package   Kirby CMS
  * @author    Flo Kosiol <git@flokosiol.de>
  * @link      http://flokosiol.de
- * @version   1.0.10
+ * @version   1.0.11
  */
 
 use Kirby\Panel\Models\File;
