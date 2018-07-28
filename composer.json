@@ -1,0 +1,21 @@
+{
+    "name": "flokosiol/focus",
+    "description": "Define an image focus point",
+    "version": "0.1.0",
+    "type": "kirby-plugin",
+    "license": "MIT",
+    "autoload": {
+        "files": [
+            "config.php"
+        ],
+        "psr-4": {
+            "Flokosiol\\": "core/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Flo Kosiol",
+            "email": "git@flokosiol.de"
+        }
+    ]
+}
