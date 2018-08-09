@@ -14,7 +14,9 @@ This is the **k-next** experimental branch for Kirby Focus. You need to have acc
 
 ## Work in progress!
 
-So far, the panel implementation already works and you can place the known methods like `<?= $image->focusCrop(200) ?>` in your plugins. **BUT** the cropping does not work. You will get the default thumb! Stay tuned for updates.
+So far, the panel implementation already works and you can use the known methods like `<?= $image->focusCrop(200) ?>` in your plugins. The first GD implementation is done and the cropping seem to work …
+
+… **BUT** there's an [issue with the filenames](https://github.com/k-next/kirby/issues/860).
 
 
 ## Installation
