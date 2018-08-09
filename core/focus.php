@@ -2,11 +2,7 @@
 
 Namespace Flokosiol;
 
-use Exception;
-use Kirby\Cms\App;
-use Kirby\Toolkit\F;
-use Kirby\Cms\Filename;
-use Kirby\Image\Darkroom;
+use Kirby\Image;
 
 class Focus {
 
@@ -33,40 +29,38 @@ class Focus {
     /**
     * Calculates crop coordinates and width/height to crop and resize the original image
     */
-    public static function cropValues($file, $options)
+    public static function cropValues($options)
     {
-        // get original image dimensions
-        $dimensions = $file->dimensions();
 
         // calculate new height for original image based crop ratio
         if ($options['fit'] == 'width') {
-            $width  = $dimensions->width();
-            $height = floor($dimensions->width() / $options['ratio']);
+            $width  = $options['originalWidth'];
+            $height = floor($options['originalWidth'] / $options['ratio']);
 
             $heightHalf = floor($height / 2);
 
             // calculate focus for original image
             $focusX = floor($width * 0.5);
-            $focusY = floor($dimensions->height() * $options['focusY']);
+            $focusY = floor($options['originalHeight'] * $options['focusY']);
 
             $x1 = 0;
             $y1 = $focusY - $heightHalf;
 
             // $y1 off canvas?
             $y1 = ($y1 < 0) ? 0 : $y1;
-            $y1 = ($y1 + $height > $dimensions->height()) ? $dimensions->height() - $height : $y1;
+            $y1 = ($y1 + $height > $options['originalHeight']) ? $options['originalHeight'] - $height : $y1;
 
         }
 
         // calculate new width for original image based crop ratio
         if ($options['fit'] == 'height') {
-            $width  = $dimensions->height() * $options['ratio'];
-            $height = $dimensions->height();
+            $width  = $options['originalHeight'] * $options['ratio'];
+            $height = $options['originalHeight'];
 
             $widthHalf = floor($width / 2);
 
             // calculate focus for original image
-            $focusX = floor($dimensions->width() * $options['focusX']);
+            $focusX = floor($options['originalWidth'] * $options['focusX']);
             $focusY = $height * 0.5;
 
             $x1 = $focusX - $widthHalf;
@@ -74,7 +68,7 @@ class Focus {
 
             // $x1 off canvas?
             $x1 = ($x1 < 0) ? 0 : $x1;
-            $x1 = ($x1 + $width > $dimensions->width()) ? $dimensions->width() - $width : $x1;
+            $x1 = ($x1 + $width > $options['originalWidth']) ? $options['originalWidth'] - $width : $x1;
         }
 
         $x2 = floor($x1 + $width);
@@ -117,26 +111,6 @@ class Focus {
 
         return $focusCoordinates;
     }
-
-
-    /**
-     * Override Kirby thumb component
-     */
-    // public function thumb(string $src, string $dst, array $attributes = [])
-    // {
-    //     $config   = $kirby->option('thumbs', []);
-    //     $darkroom = Darkroom::factory($config['driver'] ?? 'gd', $config);
-    //     $options  = $darkroom->preprocess($src, $options);
-    //     $root     = (new Filename($src, $dst, $options))->toString();
-
-    //     // check if the thumbnail has to be regenerated
-    //     if (file_exists($root) !== true || filemtime($root) < filemtime($src)) {
-    //         F::copy($src, $root);
-    //         $darkroom->process($root, $options);
-    //     }
-
-    //     return $root;
-    // }
 
 }
 
