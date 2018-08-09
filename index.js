@@ -34,12 +34,12 @@ panel.plugin("flokosiol/focus", {
         }
       },
       template: `
-        <kirby-field v-bind="$props" v-if="image" class="kirby-focus-field" >
+        <k-field v-bind="$props" v-if="image" class="kirby-focus-field" >
           <div class="focus-box">
             <img class="focus-preview" :src="image" @click="setFocus" />
             <div class="focus-point" :style="style"></div>
           </div>
-        </kirby-field>
+        </k-field>
       `
     }
   }
