@@ -2,7 +2,8 @@
 
 namespace Flokosiol\Focus;
 
-use Exception;
+use Kirby\Image\Image;
+use Kirby\Image\Dimensions;
 use Kirby\Image\Darkroom;
 use Kirby\Toolkit\F;
 
@@ -59,6 +60,14 @@ class ImageMagick extends Darkroom
     public function process(string $file, array $options = []): array
     {
         $options = $this->preprocess($file, $options);
+
+        // original image dimension for focus cropping
+        $originalImage = new Image($file);
+        if ($dimensions = $originalImage->dimensions()) {
+            $options['originalWidth'] = $dimensions->width();
+            $options['originalHeight'] = $dimensions->height();
+        }
+
         $command = [];
 
         $command[] = $this->convert($file, $options);
@@ -87,9 +96,16 @@ class ImageMagick extends Darkroom
 
     protected function resize(string $file, array $options): string
     {
+        dd($options);
         // simple resize
         if ($options['crop'] === false) {
             return sprintf('-resize %sx%s!', $options['width'], $options['height']);
+        }
+
+        // focus cropping
+        if (!empty($options['focus'])) {
+            $focusCropValues = \Flokosiol\Focus::cropValues($options);
+            return sprintf('-crop %sx%s+%s+%s -resize %sx%s^', $focusCropValues['width'], $focusCropValues['height'], $focusCropValues['x1'], $focusCropValues['y1'], $options['width'], $options['height']);
         }
 
         $gravities = [

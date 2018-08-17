@@ -6,7 +6,7 @@ use Kirby\Cms\Filename;
 use Kirby\Image\Darkroom;
 
 Kirby\Image\Darkroom::$types['gd'] = 'Flokosiol\Focus\GdLib';
-// Kirby\Image\Darkroom::$types['im'] = 'Flokosiol\Focus\ImageMagick';
+Kirby\Image\Darkroom::$types['im'] = 'Flokosiol\Focus\ImageMagick';
 
 Kirby::plugin('flokosiol/focus', [
     'fields' => [

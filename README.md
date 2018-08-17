@@ -1,6 +1,6 @@
 # Kirby Focus
 
-![Version](https://img.shields.io/badge/Version-0.1.0-orange.svg) ![Kirby](https://img.shields.io/badge/Kirby-3.x-red.svg)
+![Version](https://img.shields.io/badge/Version-0.2.0-orange.svg) ![Kirby](https://img.shields.io/badge/Kirby-3.x-red.svg)
 
 This is the **k-next** experimental branch for Kirby Focus. You need to have access to the beta version of Kirby 3.
 
@@ -10,13 +10,11 @@ This is the **k-next** experimental branch for Kirby Focus. You need to have acc
 
 ## Requirements
 
-+ Kirby CMS, Version **3.x Beta**
++ Kirby CMS, Version **3.x Beta 5+** (or the latests dev branch)
 
 ## Work in progress!
 
-So far, the panel implementation already works and you can use the known methods like `<?= $image->focusCrop(200) ?>` in your plugins. The first GD implementation is done and the cropping seem to work …
-
-… **BUT** there's an [issue with the filenames](https://github.com/k-next/kirby/issues/860).
+The problem seem to work fine, but I still need to do some more testing.
 
 
 ## Installation
@@ -31,4 +29,12 @@ fields:
   focus:
     label: My Focus Field
     type: focus
+```
+
+Use the the `focusCrop()` method in your templates like this:
+
+```
+<?= $image->focusCrop(200) ?>
+<?= $image->focusCrop(200, 300) ?>
+<?= $image->focusCrop(150, 150, ['grayscale' => true]) ?>
 ```
