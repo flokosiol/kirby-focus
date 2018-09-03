@@ -165,6 +165,11 @@ As mentioned by several people ([Matthias](https://forum.getkirby.com/t/focus-de
 [https://github.com/sylvainjule/kirby-autofocus](https://github.com/sylvainjule/kirby-autofocus)
 
 
+## License
+
+[MIT](https://github.com/flokosiol/kirby-focus/blob/master/LICENSE)
+
+It is discouraged to use this plugin in any project that promotes racism, sexism, homophobia, animal abuse, violence or any other form of hate speech.
 
 ## Credits
 
