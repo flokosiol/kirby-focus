@@ -14,7 +14,9 @@ Kirby::plugin('flokosiol/focus', [
             'props' => [
                 'value' => function ($value = '{"x":0.5,"y":0.5}') {
                     return $value;
-                },
+                }
+            ],
+            'computed' => [
                 'image' => function() {
                     if ($this->model()->type() == "image") {
                         return $this->model()->url();
@@ -23,9 +25,6 @@ Kirby::plugin('flokosiol/focus', [
                         return false;
                     }
                 }
-            ],
-            'computed' => [
-
             ]
         ]
     ],
@@ -72,7 +71,6 @@ Kirby::plugin('flokosiol/focus', [
             $options['focusY'] = Flokosiol\Focus::numberFormat($options['focusY']);
 
             // set crop value to force cropping in Darkroom::preprocess
-            // #WORKAROUND: pass coordinates as crop option to include into filename
             $options['crop'] = $options['focusX'] * 100 . '-' . $options['focusY'] * 100;
 
             // filename with hash
