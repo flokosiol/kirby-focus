@@ -14,7 +14,7 @@ This is the **k-next** experimental branch for Kirby Focus. You need to have acc
 
 ## Work in progress!
 
-The problem seem to work fine, but I still need to do some more testing.
+The plugin seem to work fine, but I still need to do some more testing. If you find any errors, please don't create an issue here on Github. Thanks!
 
 
 ## Installation
