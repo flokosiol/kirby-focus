@@ -2,6 +2,9 @@
 
 ![Version](https://img.shields.io/badge/Version-1.0.11-green.svg) ![Kirby](https://img.shields.io/badge/Kirby-2.3+-red.svg)
 
+
+> **FOR THE KIRBY 3 VERSION OF THIS PLUGIN, PLEASE CHECK OUT THE [K-NEXT](https://github.com/flokosiol/kirby-focus/tree/k-next) BRANCH**
+
 With this plugin for [Kirby 2](http://getkirby.com) you can prevent the most important part of an image from being cropped when creating automated thumbs.
 
 **The plugin does two things:**
