@@ -1,6 +1,6 @@
 {
     "name": "flokosiol/focus",
-    "description": "Define an image focus point",
+    "description": "Better image cropping for Kirby CMS",
     "version": "0.2.0",
     "type": "kirby-plugin",
     "license": "MIT",
