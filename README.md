@@ -1,6 +1,6 @@
 # Kirby Focus
 
-![Version](https://img.shields.io/badge/Version-0.2.0-orange.svg) ![Kirby](https://img.shields.io/badge/Kirby-3.x-red.svg)
+![Version](https://img.shields.io/badge/Version-3.0.0-green.svg) ![Kirby](https://img.shields.io/badge/Kirby-3.x-black.svg)
 
 > **FOR THE KIRBY 2 VERSION OF THIS PLUGIN, PLEASE CHECK OUT THE [KIRBY-2](https://github.com/flokosiol/kirby-focus/tree/kirby-2) BRANCH**
 
