@@ -17,5 +17,6 @@
             "name": "Flo Kosiol",
             "email": "git@flokosiol.de"
         }
-    ]
+    ],
+    "minimum-stability": "beta"
 }
