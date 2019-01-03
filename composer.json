@@ -4,6 +4,9 @@
     "version": "3.0.0",
     "type": "kirby-plugin",
     "license": "MIT",
+    "require": {
+        "getkirby/cms": "^3.0.0-RC-1.0"
+    },
     "autoload": {
         "files": [
             "config.php"
