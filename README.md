@@ -20,7 +20,7 @@ With this plugin for [Kirby CMS](http://getkirby.com) you can prevent the most i
 
 ### Composer
 
-The installation with Composer will definitely be supported in the future.
+If you are using Composer, you can install the plugin with `composer require flokosiol/focus`.
 
 ### Download
 
