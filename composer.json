@@ -5,7 +5,7 @@
     "type": "kirby-plugin",
     "license": "MIT",
     "require": {
-        "getkirby/cms": "^3.0.0-RC-1.0"
+        "getkirby/cms": "^3.0.0"
     },
     "autoload": {
         "files": [
