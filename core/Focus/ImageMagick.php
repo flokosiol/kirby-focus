@@ -96,7 +96,6 @@ class ImageMagick extends Darkroom
 
     protected function resize(string $file, array $options): string
     {
-        dd($options);
         // simple resize
         if ($options['crop'] === false) {
             return sprintf('-resize %sx%s!', $options['width'], $options['height']);
