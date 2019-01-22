@@ -1,1 +1,5 @@
 .DS_Store
+/vendor
+/kirby-focus.zip
+/composer.lock
+/kirby

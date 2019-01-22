@@ -1,6 +1,6 @@
 # Kirby Focus
 
-![Version](https://img.shields.io/badge/Version-3.0.0-green.svg) ![Kirby](https://img.shields.io/badge/Kirby-3.x-black.svg)
+![Version](https://img.shields.io/badge/Version-3.0.1-blue.svg) ![License](https://img.shields.io/badge/License-MIT-green.svg) ![Kirby](https://img.shields.io/badge/Kirby-3.x-f0c674.svg)
 
 > **FOR THE KIRBY 2 VERSION OF THIS PLUGIN, PLEASE CHECK OUT THE [KIRBY-2](https://github.com/flokosiol/kirby-focus/tree/kirby-2) BRANCH**
 
@@ -16,6 +16,13 @@ With this plugin for [Kirby CMS](http://getkirby.com) you can prevent the most i
 + Kirby CMS, Version **3.x**
 + GD Library or ImageMagick
 
+## Commercial Usage
+
+This plugin is free but if you use it in a commercial project please consider to.
+
++ [make a donation](https://www.paypal.me/flokosiol/10) or
++ [buy a Kirby license using this affiliate link](https://a.paddle.com/v2/click/1129/36201?link=1170)
+
 ## Installation
 
 ### Composer
@@ -24,7 +31,7 @@ If you are using Composer, you can install the plugin with `composer require flo
 
 ### Download
 
-Download and extract the files from this branch, rename the folder to `focus` and drop it into the `site/plugins/` folder of your Kirby 3 installation. That's it.
+Download and extract the [zip of the latest release](https://github.com/flokosiol/kirby-focus/releases/download/v3.0.1/kirby-focus.zip), rename the folder to `focus` and drop it into the `site/plugins/` folder of your Kirby 3 installation. That's it.
 
 ## Usage
 
