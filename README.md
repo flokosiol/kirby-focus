@@ -31,7 +31,7 @@ If you are using Composer, you can install the plugin with `composer require flo
 
 ### Download
 
-Download and extract the [zip of the latest release](https://github.com/flokosiol/kirby-focus/releases/download/v3.0.1/kirby-focus.zip), rename the folder to `focus` and drop it into the `site/plugins/` folder of your Kirby 3 installation. That's it.
+Download and extract the [zip of the latest release](https://github.com/flokosiol/kirby-focus/releases/download/3.0.1/kirby-focus.zip), rename the folder to `focus` and drop it into the `site/plugins/` folder of your Kirby 3 installation. That's it.
 
 ## Usage
 
