@@ -26,6 +26,19 @@ panel.plugin("flokosiol/focus", {
           }
         }
       },
+      watch: {
+      	value(newVal, oldVal) {
+      		var newValArr = newVal.split(',');
+
+      		if(newValArr && newValArr.length) {
+      			var newLeft =  newValArr[0].replace('{"x":', '')
+      			var newTop  = newValArr[1].replace('"y":', '').replace('}', '')
+
+      			if(newLeft != this.left) this.left = newLeft
+	      		if(newTop != this.top)   this.top  = newTop
+      		}
+	    },
+      },
       methods: {
         setFocus(event) {
           this.left = Math.round(event.offsetX / event.target.width * 100) / 100
