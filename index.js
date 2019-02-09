@@ -26,6 +26,13 @@ panel.plugin("flokosiol/focus", {
           }
         }
       },
+      watch: {
+      	value(newVal, oldVal) {
+      		var newVal = JSON.parse(newVal);
+      		if(newVal.x != this.left) this.left = newVal.x
+	      	if(newVal.y != this.top)  this.top  = newVal.y
+	    },
+      },
       methods: {
         setFocus(event) {
           this.left = Math.round(event.offsetX / event.target.width * 100) / 100
@@ -36,8 +43,11 @@ panel.plugin("flokosiol/focus", {
       template: `
         <k-field v-bind="$props" v-if="image" class="kirby-focus-field" >
           <div class="focus-box">
-            <img class="focus-preview" :src="image" @click="setFocus" />
-            <div class="focus-point" :style="style"></div>
+            <div class="focus-preview-container">
+            	<img class="focus-preview" :src="image" @click="setFocus" />
+            	<div class="focus-point" :style="style"></div>
+            </div>
+            <div class="focus-background"></div>
           </div>
         </k-field>
       `
