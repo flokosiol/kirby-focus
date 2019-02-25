@@ -4,7 +4,8 @@ panel.plugin("flokosiol/focus", {
       props: {
         label: String,
         value: String,
-        image: String
+        image: String,
+        help: String
       },
       data () {
         let coordinates = JSON.parse(this.value || '{"x":0.5,"y":0.5}')
@@ -49,6 +50,7 @@ panel.plugin("flokosiol/focus", {
             </div>
             <div class="focus-background"></div>
           </div>
+          <slot name="footer"></slot>
         </k-field>
       `
     }
