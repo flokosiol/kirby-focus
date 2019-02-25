@@ -1,6 +1,6 @@
 # Kirby Focus
 
-![Version](https://img.shields.io/badge/Version-3.0.1-blue.svg) ![License](https://img.shields.io/badge/License-MIT-green.svg) ![Kirby](https://img.shields.io/badge/Kirby-3.x-f0c674.svg)
+![Version](https://img.shields.io/badge/Version-3.0.2-blue.svg) ![License](https://img.shields.io/badge/License-MIT-green.svg) ![Kirby](https://img.shields.io/badge/Kirby-3.x-f0c674.svg)
 
 > **FOR THE KIRBY 2 VERSION OF THIS PLUGIN, PLEASE CHECK OUT THE [KIRBY-2](https://github.com/flokosiol/kirby-focus/tree/kirby-2) BRANCH**
 
@@ -25,13 +25,27 @@ This plugin is free but if you use it in a commercial project please consider to
 
 ## Installation
 
-### Composer
-
-If you are using Composer, you can install the plugin with `composer require flokosiol/focus`.
-
 ### Download
 
-Download and extract the [zip of the latest release](https://github.com/flokosiol/kirby-focus/releases/download/3.0.1/kirby-focus.zip), rename the folder to `focus` and drop it into the `site/plugins/` folder of your Kirby 3 installation. That's it.
+Download and extract this repository, rename the folder to `focus` and drop it into the plugins folder of your Kirby 3 installation. You should end up with a folder structure like this:
+
+```
+site/plugins/focus/
+```
+
+### Composer
+
+If you are using Composer, you can install the plugin with
+
+```
+composer require flokosiol/focus
+```
+
+### Git submodule
+
+```
+git submodule add https://github.com/flokosiol/focus.git site/plugins/focus
+```
 
 ## Usage
 
