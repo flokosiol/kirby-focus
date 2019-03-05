@@ -26,7 +26,7 @@ Be aware that the plugin overrides the default thumbs driver for GD or ImageMagi
 
 ## Preview
 
-![Preview](preview.gif)
+![preview](https://user-images.githubusercontent.com/11918336/53806296-daa7b880-3f4c-11e9-86ce-edc64212cc2d.gif)
 
 
 ## Installation
