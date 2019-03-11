@@ -3,7 +3,7 @@
 load([
     'flokosiol\\focus' => 'src/Focus.php',
     'flokosiol\\focus\\gdlib' => 'src/Focus/GdLib.php',
-    'flokosiol\\focus\\focus' => 'src/Focus/ImageMagick.php'
+    'flokosiol\\focus\\imagemagick' => 'src/Focus/ImageMagick.php'
 ], __DIR__);
 
 // use Exeption;
