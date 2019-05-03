@@ -3,6 +3,7 @@
 Namespace Flokosiol;
 
 use Kirby\Image;
+// use Kirby\Image\Darkroom;
 
 class Focus {
 
@@ -110,6 +111,51 @@ class Focus {
         }
 
         return $focusCoordinates;
+    }
+
+
+    /**
+     * Returns the focus-cropped image
+     */
+    public static function focusCrop($file, $width, $height, $options) {
+        // Darkroom::$types['gd'] = 'Flokosiol\Focus\GdLib';
+        // Darkroom::$types['im'] = 'Flokosiol\Focus\ImageMagick';
+
+        // width and height - if no height is given use width to crop a square
+        $options['width'] = $width;
+        $options['height'] = ($height) ? $height : $width;
+
+        // determine aspect ratios
+        $ratioSource = Focus::ratio($file->width(), $file->height());
+        $ratioThumb  = Focus::ratio($options['width'], $options['height']);
+
+        // no cropping necessary
+        if ($ratioSource == $ratioThumb) {
+            return $file->thumb($options);
+        }
+
+        $options['focus'] = true;
+        $options['ratio'] = Focus::numberFormat($ratioThumb);
+        $options['fit']   = ($ratioThumb < $ratioSource) ? 'height' : 'width';
+
+        // if forced coordinate is set, use it - otherwise look at file field values or use center as default
+        $options['focusX'] = (!empty($options['focusX'])) ? Focus::numberFormat($options['focusX']) : Focus::coordinates($file, 'x');
+        $options['focusY'] = (!empty($options['focusY'])) ? Focus::numberFormat($options['focusY']) : Focus::coordinates($file, 'y');
+
+        // convert localized floats
+        $options['focusX'] = Focus::numberFormat($options['focusX']);
+        $options['focusY'] = Focus::numberFormat($options['focusY']);
+
+        // set crop value to force cropping in Darkroom::preprocess
+        $options['crop'] = $options['focusX'] * 100 . '-' . $options['focusY'] * 100;
+
+        // filename with hash
+        // $hash = option('flokosiol.focus.filename.hash', false);
+        // if ($hash) {
+        //     $options['crop'] = md5(serialize($options));
+        // }
+
+        return $file->thumb($options);
     }
 
 }

@@ -6,15 +6,25 @@ load([
     'flokosiol\\focus\\imagemagick' => 'src/Focus/ImageMagick.php'
 ], __DIR__);
 
-// use Exeption;
-use Kirby\Toolkit\F;
-use Kirby\Cms\Filename;
+// use Kirby\Cms\App;
 use Kirby\Image\Darkroom;
 
 Kirby\Image\Darkroom::$types['gd'] = 'Flokosiol\Focus\GdLib';
 Kirby\Image\Darkroom::$types['im'] = 'Flokosiol\Focus\ImageMagick';
 
 Kirby::plugin('flokosiol/focus', [
+    // 'components' => [
+    //     'thumb' => function (App $kirby, string $src, string $dst, array $options): string {
+    //         if (isset($options['focus'])) {
+    //             Kirby\Image\Darkroom::$types['gd'] = 'Flokosiol\Focus\GdLib';
+    //             Kirby\Image\Darkroom::$types['im'] = 'Flokosiol\Focus\ImageMagick';
+    //         }
+
+    //         // @see kirby/config/components.php
+    //         $core = require $kirby->root('kirby') . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'components.php';
+    //         return $core['thumb']($kirby, $src, $dst, $options);
+    //     },
+    // ],
     'fields' => [
         'focus' => [
             'props' => [
@@ -50,42 +60,7 @@ Kirby::plugin('flokosiol/focus', [
             return ($roundTo * ceil($focusY * 100 / $roundTo));
         },
         'focusCrop' => function (int $width, int $height = null, $options = []) {
-
-            // width and height - if no height is given use width to crop a square
-            $options['width'] = $width;
-            $options['height'] = ($height) ? $height : $width;
-
-            // determine aspect ratios
-            $ratioSource = Flokosiol\Focus::ratio($this->width(), $this->height());
-            $ratioThumb  = Flokosiol\Focus::ratio($options['width'], $options['height']);
-
-            // no cropping necessary
-            if ($ratioSource == $ratioThumb) {
-                return $this->thumb($options);
-            }
-
-            $options['focus'] = true;
-            $options['ratio'] = Flokosiol\Focus::numberFormat($ratioThumb);
-            $options['fit']   = ($ratioThumb < $ratioSource) ? 'height' : 'width';
-
-            // if forced coordinate is set, use it - otherwise look at file field values or use center as default
-            $options['focusX'] = (!empty($options['focusX'])) ? Flokosiol\Focus::numberFormat($options['focusX']) : Flokosiol\Focus::coordinates($this, 'x');
-            $options['focusY'] = (!empty($options['focusY'])) ? Flokosiol\Focus::numberFormat($options['focusY']) : Flokosiol\Focus::coordinates($this, 'y');
-
-            // convert localized floats
-            $options['focusX'] = Flokosiol\Focus::numberFormat($options['focusX']);
-            $options['focusY'] = Flokosiol\Focus::numberFormat($options['focusY']);
-
-            // set crop value to force cropping in Darkroom::preprocess
-            $options['crop'] = $options['focusX'] * 100 . '-' . $options['focusY'] * 100;
-
-            // filename with hash
-            // $hash = option('flokosiol.focus.filename.hash', false);
-            // if ($hash) {
-            //     $options['crop'] = md5(serialize($options));
-            // }
-
-            return $this->thumb($options);
+            return Flokosiol\Focus::focusCrop($this, $width, $height, $options);
         }
     ]
 ]);
