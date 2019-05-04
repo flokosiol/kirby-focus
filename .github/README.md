@@ -44,7 +44,7 @@ composer require flokosiol/focus
 ### Git submodule
 
 ```
-git submodule add https://github.com/flokosiol/focus.git site/plugins/focus
+git submodule add https://github.com/flokosiol/kirby-focus.git site/plugins/focus
 ```
 
 ## Usage
