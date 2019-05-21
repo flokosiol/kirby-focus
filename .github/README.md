@@ -51,7 +51,7 @@ git submodule add https://github.com/flokosiol/kirby-focus.git site/plugins/focu
 
 ### 1. Blueprint
 
-Add the focus field to the **file fields** (!) of your blueprint and set type to `focus` like this:
+Add the focus field to the **fields of your [file blueprint](https://getkirby.com/docs/reference/panel/blueprints/file) (!)** and set type to `focus` like this:
 
 ```
 fields:
