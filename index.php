@@ -33,6 +33,10 @@ Kirby::plugin('flokosiol/focus', [
                 }
             ],
             'computed' => [
+                'isFileBlueprint' => function() {
+                    $fileTypes = ['image','document','archive','code','video','audio'];
+                    return in_array($this->model()->type(), $fileTypes);
+                },
                 'image' => function() {
                     if ($this->model()->type() == "image") {
                         return $this->model()->url();
