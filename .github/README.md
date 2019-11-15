@@ -121,6 +121,28 @@ As mentioned by several people ([Matthias](https://forum.getkirby.com/t/focus-de
 
 ```
 
+### Focus and `srcset` becomes `focusSrcset()`
+
+As of Kirby 3.2 a [new `srcset` method was introduced](https://getkirby.com/docs/reference/objects/file/srcset#example__more-complex-sizes-options). Since version 3.0.3 of the Focus plugin, you can use the following syntax in your templates to respect the focus point in your srcset options:
+
+```
+<img 
+  src="<?= $image->focusCrop(1000, 1000)->url() ?>"
+  srcset="<?=
+    $image->focusSrcset([
+      '800w' => [
+          'width' => 800,
+          'height' => 800,
+      ],
+      '1400w' => [
+          'width' => 1400,
+          'height' => 1400,
+      ]
+    ]);
+  ?>"
+>
+```
+
 ## Extensions
 
 ### Autofocus

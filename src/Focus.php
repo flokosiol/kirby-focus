@@ -158,4 +158,55 @@ class Focus {
         return $file->thumb($options);
     }
 
+
+    /**
+     * @see kirby/src/Cms/FileModifications.php
+     */
+    public function focusSrcset($file, $sizes = null): ?string
+    {
+        // old srcset syntax or no settings => go for default srcset()
+        if (empty($sizes) === true || is_string($sizes) === true || is_array($sizes) === false || empty($sizes) === true) {
+            return $file->srcset($sizes);
+        }
+
+        $set = [];
+
+        $focusOptions = [
+            'focus'  => true,
+            'crop'   => $file->focusPercentageX() . '-' . $file->focusPercentageY(),
+            'focusX' => $file->focusX(),
+            'focusY' => $file->focusY(),
+        ];
+
+        foreach ($sizes as $key => $value) {
+            if (is_array($value)) {
+                $options = $value;
+                $condition = $key;
+
+                // add focus options
+                $ratioSource = Focus::ratio($file->width(), $file->height());
+                $ratioThumb  = Focus::ratio($options['width'], $options['height']);
+
+                $options = $options + $focusOptions;
+                $options['ratio'] = Focus::numberFormat($ratioThumb);
+                $options['fit'] = ($ratioThumb < $ratioSource) ? 'height' : 'width';
+
+            } elseif (is_string($value) === true) {
+                $options = [
+                    'width' => $key
+                ];
+                $condition = $value;
+            } else {
+                $options = [
+                    'width' => $value
+                ];
+                $condition = $value . 'w';
+            }
+            // var_dump($options);
+            $set[] = $file->thumb($options)->url() . ' ' . $condition;
+        }
+
+        return implode(', ', $set);
+    }
+
 }
