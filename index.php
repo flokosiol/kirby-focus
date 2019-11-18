@@ -65,6 +65,18 @@ Kirby::plugin('flokosiol/focus', [
         },
         'focusCrop' => function (int $width, int $height = null, $options = []) {
             return Flokosiol\Focus::focusCrop($this, $width, $height, $options);
+        },
+        'focusPreset' => function (string $preset) {
+            $config = $this->kirby()->option('flokosiol.focus.presets.' . $preset);
+
+            if (isset($config['width'])) {
+                $width   = $config['width'];
+                $height  = $config['height'] ?? null;
+                $options = $config['options'] ?? null;
+
+                return $this->focusCrop($width, $height, $options);
+            }
+            return '';
         }
     ]
 ]);

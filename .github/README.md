@@ -121,6 +121,31 @@ As mentioned by several people ([Matthias](https://forum.getkirby.com/t/focus-de
 
 ```
 
+### Presets
+
+If you are using the same config for focus-cropped images over and over again in your project, as of version 3.0.3 you can define them as presets in your `config.php` like this:
+
+```
+return [
+  'flokosiol' => [
+    'focus' => [
+      'presets' => [
+        'square' => [
+          'width'=> 500
+        ],
+        'rectangle' => [
+          'width'=> 500,
+          'height'=> 300,
+          'options' => [
+            'grayscale' => true
+          ]
+        ]
+      ]
+    ]
+  ]
+];
+```
+
 ## Extensions
 
 ### Autofocus
