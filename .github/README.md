@@ -146,6 +146,13 @@ return [
 ];
 ```
 
+Afterwards, you can use the presets in your templates (assuming `$image` is a Kirby image object).
+
+```
+<?= $image->focusPreset('square') ?>
+<?= $image->focusPreset('rectangle') ?>
+```
+
 ## Extensions
 
 ### Autofocus
