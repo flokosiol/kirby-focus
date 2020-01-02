@@ -141,6 +141,37 @@ As of Kirby 3.2 a [new `srcset` method was introduced](https://getkirby.com/docs
     ]);
   ?>"
 >
+
+### Presets
+
+If you are using the same config for focus-cropped images over and over again in your project, as of version 3.0.3 you can define them as presets in your `config.php` like this:
+
+```
+return [
+  'flokosiol' => [
+    'focus' => [
+      'presets' => [
+        'square' => [
+          'width'=> 500
+        ],
+        'rectangle' => [
+          'width'=> 500,
+          'height'=> 300,
+          'options' => [
+            'grayscale' => true
+          ]
+        ]
+      ]
+    ]
+  ]
+];
+```
+
+Afterwards, you can use the presets in your templates (assuming `$image` is a Kirby image object).
+
+```
+<?= $image->focusPreset('square') ?>
+<?= $image->focusPreset('rectangle') ?>
 ```
 
 ## Extensions
@@ -159,3 +190,7 @@ As of Kirby 3.2 a [new `srcset` method was introduced](https://getkirby.com/docs
 [MIT](https://github.com/flokosiol/kirby-focus/blob/master/LICENSE)
 
 It is discouraged to use this plugin in any project that promotes racism, sexism, homophobia, animal abuse, violence or any other form of hate speech.
+
+## Credits
+
+Special thanks to all [contributors](https://github.com/flokosiol/kirby-focus/graphs/contributors)!
