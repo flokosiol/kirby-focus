@@ -141,6 +141,7 @@ As of Kirby 3.2 a [new `srcset` method was introduced](https://getkirby.com/docs
     ]);
   ?>"
 >
+```
 
 ### Presets
 
