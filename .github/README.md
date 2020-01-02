@@ -169,3 +169,7 @@ Afterwards, you can use the presets in your templates (assuming `$image` is a Ki
 [MIT](https://github.com/flokosiol/kirby-focus/blob/master/LICENSE)
 
 It is discouraged to use this plugin in any project that promotes racism, sexism, homophobia, animal abuse, violence or any other form of hate speech.
+
+## Credits
+
+Special thanks to all [contributors](https://github.com/flokosiol/kirby-focus/graphs/contributors)!
