@@ -162,7 +162,7 @@ class Focus {
     /**
      * @see kirby/src/Cms/FileModifications.php
      */
-    public function focusSrcset($file, $sizes = null): ?string
+    public static function focusSrcset($file, $sizes = null): ?string
     {
         // old srcset syntax or no settings => go for default srcset()
         if (empty($sizes) === true || is_string($sizes) === true || is_array($sizes) === false || empty($sizes) === true) {
