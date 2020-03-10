@@ -2,6 +2,7 @@
 
 namespace Flokosiol\Focus;
 
+use Exception;
 use Kirby\Image\Image;
 use Kirby\Image\Dimensions;
 use Kirby\Image\Darkroom;
@@ -84,7 +85,13 @@ class ImageMagick extends Darkroom
         // remove all null values and join the parts
         $command = implode(' ', array_filter($command));
 
-        exec($command);
+        // try to execute the command
+        exec($command, $output, $return);
+
+        // log broken commands
+        if ($return !== 0) {
+            throw new Exception('The imagemagick convert command could not be executed: ' . $command);
+        }
 
         return $options;
     }
