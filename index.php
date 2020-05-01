@@ -44,6 +44,17 @@ Kirby::plugin('flokosiol/focus', [
                     else {
                         return false;
                     }
+                },
+                'video' => function() {
+                    if ($this->model()->type() == "video") {
+                        return [
+                            'url'  => $this->model()->url(),
+                            'mime' => $this->model()->mime()
+                        ];
+                    }
+                    else {
+                        return false;
+                    }
                 }
             ]
         ]

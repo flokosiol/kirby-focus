@@ -5,6 +5,7 @@ panel.plugin("flokosiol/focus", {
         label: String,
         value: String,
         image: String,
+        video: Array,
         help: String,
         isFileBlueprint: Boolean
       },
@@ -14,7 +15,8 @@ panel.plugin("flokosiol/focus", {
         return {
           left: coordinates.x,
           top: coordinates.y,
-          image: null
+          image: null,
+          video: null,
         }
       },
       computed: {
@@ -29,25 +31,31 @@ panel.plugin("flokosiol/focus", {
         }
       },
       watch: {
-      	value(newVal, oldVal) {
-      		var newVal = JSON.parse(newVal);
-      		if(newVal.x != this.left) this.left = newVal.x
-	      	if(newVal.y != this.top)  this.top  = newVal.y
-	    },
+        value(newVal, oldVal) {
+          var newVal = JSON.parse(newVal);
+          if(newVal.x != this.left) this.left = newVal.x
+          if(newVal.y != this.top)  this.top  = newVal.y
+      },
       },
       methods: {
         setFocus(event) {
-          this.left = Math.round(event.offsetX / event.target.width * 100) / 100
-          this.top = Math.round(event.offsetY / event.target.height * 100) / 100
+          let w = event.target.width || event.target.clientWidth
+          let h = event.target.height || event.target.clientHeight
+
+          this.left = Math.round(event.offsetX / w * 100) / 100
+          this.top = Math.round(event.offsetY / h * 100) / 100
           this.$emit('input', this.json)
         }
       },
       template: `
         <k-field v-bind="$props" class="kirby-focus-field" >
-          <div v-if="image" class="focus-box">
+          <div v-if="image || video" class="focus-box">
             <div class="focus-preview-container">
-            	<img class="focus-preview" :src="image" @click="setFocus" />
-            	<div class="focus-point" :style="style"></div>
+              <img v-if="image" class="focus-preview" :src="image" @click="setFocus" />
+              <video v-else class="focus-preview" @click="setFocus">
+                <source :src="video.url" :type="video.mime">
+              </video>
+              <div class="focus-point" :style="style"></div>
             </div>
             <div class="focus-background"></div>
             <slot name="footer"></slot>
