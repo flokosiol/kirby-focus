@@ -175,7 +175,7 @@ Afterwards, you can use the presets in your templates (assuming `$image` is a Ki
 <?= $image->focusPreset('rectangle') ?>
 ```
 
-## Extensions
+## Extensions and implementations
 
 ### Autofocus
 
@@ -185,6 +185,9 @@ Afterwards, you can use the presets in your templates (assuming `$image` is a Ki
 
 [https://github.com/sylvainjule/kirby-autofocus](https://github.com/sylvainjule/kirby-autofocus)
 
+### Colorist
+
+[Kirby Colorist](https://github.com/fundevogel/kirby3-colorist) by @S1SYPHOS is fully compatible with Kirby Focus. This plugin is capable of image conversion to `AVIF`, `WebP` and some other formats, as well as resizing them.
 
 ## License
 
