@@ -87,3 +87,7 @@
   top: 15px;
   left: 18px;
 }
+
+.kirby-focus-field[disabled] {
+  pointer-events: none
+}
