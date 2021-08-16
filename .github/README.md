@@ -1,6 +1,6 @@
 # Kirby Focus
 
-![Version](https://img.shields.io/badge/Version-3.0.6-blue.svg) ![License](https://img.shields.io/badge/License-MIT-green.svg) ![Kirby](https://img.shields.io/badge/Kirby-3.x-f0c674.svg)
+![Version](https://img.shields.io/badge/Version-3.0.7-blue.svg) ![License](https://img.shields.io/badge/License-MIT-green.svg) ![Kirby](https://img.shields.io/badge/Kirby-3.x-f0c674.svg)
 
 With this plugin for [Kirby CMS](http://getkirby.com) you can prevent the most important part of an image from being cropped when creating automated thumbs.
 
@@ -119,28 +119,6 @@ As mentioned by several people ([Matthias](https://forum.getkirby.com/t/focus-de
 
 ```
 
-### Focus and `srcset` becomes `focusSrcset()`
-
-As of Kirby 3.2 a [new `srcset` method was introduced](https://getkirby.com/docs/reference/objects/file/srcset#example__more-complex-sizes-options). Since version 3.0.3 of the Focus plugin, you can use the following syntax in your templates to respect the focus point in your srcset options:
-
-```
-<img 
-  src="<?= $image->focusCrop(1000, 1000)->url() ?>"
-  srcset="<?=
-    $image->focusSrcset([
-      '800w' => [
-          'width' => 800,
-          'height' => 800,
-      ],
-      '1400w' => [
-          'width' => 1400,
-          'height' => 1400,
-      ]
-    ]);
-  ?>"
->
-```
-
 ### Presets
 
 If you are using the same config for focus-cropped images over and over again in your project, as of version 3.0.3 you can define them as presets in your `config.php` like this:
@@ -173,6 +151,68 @@ Afterwards, you can use the presets in your templates (assuming `$image` is a Ki
 <?= $image->focusPreset('rectangle') ?>
 ```
 
+### Focus and `srcset` becomes `focusSrcset()`
+
+As of Kirby 3.2 a [new `srcset` method was introduced](https://getkirby.com/docs/reference/objects/file/srcset#example__more-complex-sizes-options). Since version 3.0.3 of the Focus plugin, you can use the following syntax in your templates to respect the focus point in your srcset options:
+
+```
+<img 
+  src="<?= $image->focusCrop(1000, 1000)->url() ?>"
+  srcset="<?=
+    $image->focusSrcset([
+      '800w' => [
+        'width' => 800,
+        'height' => 800,
+      ],
+      '1400w' => [
+        'width' => 1400,
+        'height' => 1400,
+      ]
+    ]);
+  ?>"
+>
+```
+
+As of version 3.0.7 you can furthermore define your srcsets in your `config.php`.
+
+```
+return [
+  'flokosiol' => [
+    'focus' => [
+      'srcsets' => [
+        'homer' => [
+          '800w' => [
+            'width' => 800,
+            'height' => 800,
+          ],
+          '1400w' => [
+            'width' => 1400,
+            'height' => 1400,
+          ]
+        ],
+        'bart' => [
+          '100w' => [
+            'width' => 100,
+            'height' => 100,
+          ],
+          '900w' => [
+            'width' => 900,
+            'height' => 900,
+          ]
+        ]
+      ]
+    ]
+  ]
+];
+```
+
+In your template file you can use the defined srcset like this:
+
+```
+<?= $image->focusSrcset('bart') ?>
+``` 
+
+
 ## Extensions and implementations
 
 ### Autofocus
@@ -196,3 +236,4 @@ It is discouraged to use this plugin in any project that promotes racism, sexism
 ## Credits
 
 Special thanks to all [contributors](https://github.com/flokosiol/kirby-focus/graphs/contributors)!
+	
