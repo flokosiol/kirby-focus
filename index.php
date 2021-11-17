@@ -77,8 +77,8 @@ Kirby::plugin('flokosiol/focus', [
         'focusCrop' => function (int $width, int $height = null, $options = []) {
             return Flokosiol\Focus::focusCrop($this, $width, $height, $options);
         },
-        'focusSrcset' => function ($sizes = null) {
-            return Flokosiol\Focus::focusSrcset($this, $sizes);
+        'focusSrcset' => function ($format, $sizes = null) {
+            return Flokosiol\Focus::focusSrcset($this, $format, $sizes);
         },
         'focusPreset' => function (string $preset) {
             $config = $this->kirby()->option('flokosiol.focus.presets.' . $preset);

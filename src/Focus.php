@@ -162,11 +162,11 @@ class Focus {
     /**
      * @see kirby/src/Cms/FileModifications.php
      */
-    public static function focusSrcset($file, $sizes = null): ?string
+    public static function focusSrcset($file, $format, $sizes = null): ?string
     {
         if (is_string($sizes) === true) {
             $preset = kirby()->option('flokosiol.focus.srcsets.' . $sizes);
-            return Focus::focusSrcset($file, $preset);
+            return Focus::focusSrcset($file, $format, $preset);
         }
 
         // old srcset syntax or no settings => go for default srcset()
@@ -176,11 +176,14 @@ class Focus {
 
         $set = [];
 
+   
+
         $focusOptions = [
             'focus'  => true,
             'crop'   => $file->focusPercentageX() . '-' . $file->focusPercentageY(),
             'focusX' => $file->focusX(),
             'focusY' => $file->focusY(),
+            'format' => $format
         ];
 
         foreach ($sizes as $key => $value) {
