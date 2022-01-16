@@ -194,7 +194,8 @@ class Focus {
 
                 $options = $options + $focusOptions;
                 $options['ratio'] = Focus::numberFormat($ratioThumb);
-                $options['fit'] = ($ratioThumb < $ratioSource) ? 'height' : 'width';
+                $options['fit']   = ($ratioThumb < $ratioSource) ? 'height' : 'width';
+                $options['crop']  = $options['focusX'] * 100 . '-' . $options['focusY'] * 100;
 
             } elseif (is_string($value) === true) {
                 $options = [
