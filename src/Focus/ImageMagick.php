@@ -34,7 +34,7 @@ class ImageMagick extends Darkroom
     protected function blur(string $file, array $options)
     {
         if ($options['blur'] !== false) {
-            return '-blur 0x' . $options['blur'];
+            return '-blur ' . escapeshellarg('0x' . $options['blur']);
         }
     }
 
@@ -61,7 +61,21 @@ class ImageMagick extends Darkroom
      */
     protected function convert(string $file, array $options): string
     {
-        return sprintf($options['bin'] . ' "%s"', $file);
+        $command = escapeshellarg($options['bin']);
+
+        // limit to single-threading to keep CPU usage sane
+        $command .= ' -limit thread 1';
+
+        // add JPEG size hint to optimize CPU and memory usage
+        if (F::mime($file) === 'image/jpeg') {
+            // add hint only when downscaling
+            if ($options['scaleWidth'] < 1 && $options['scaleHeight'] < 1) {
+                $command .= ' -define ' . escapeshellarg(sprintf('jpeg:size=%dx%d', $options['width'], $options['height']));
+            }
+        }
+
+        // append input file
+        return $command . ' ' . escapeshellarg($file);
     }
 
     /**
@@ -162,7 +176,7 @@ class ImageMagick extends Darkroom
      */
     protected function quality(string $file, array $options): string
     {
-        return '-quality ' . $options['quality'];
+        return '-quality ' . escapeshellarg($options['quality']);
     }
 
     /**
@@ -177,7 +191,7 @@ class ImageMagick extends Darkroom
     {
         // simple resize
         if ($options['crop'] === false) {
-            return sprintf('-resize %sx%s!', $options['width'], $options['height']);
+            return '-thumbnail ' . escapeshellarg(sprintf('%sx%s!', $options['width'], $options['height']));
         }
 
         // focus cropping
@@ -201,8 +215,9 @@ class ImageMagick extends Darkroom
         // translate the gravity option into something imagemagick understands
         $gravity = $gravities[$options['crop']] ?? 'Center';
 
-        $command  = sprintf('-resize %sx%s^', $options['width'], $options['height']);
-        $command .= sprintf(' -gravity %s -crop %sx%s+0+0', $gravity, $options['width'], $options['height']);
+        $command  = '-thumbnail ' . escapeshellarg(sprintf('%sx%s^', $options['width'], $options['height']));
+        $command .= ' -gravity ' . escapeshellarg($gravity);
+        $command .= ' -crop ' . escapeshellarg(sprintf('%sx%s+0+0', $options['width'], $options['height']));
 
         return $command;
     }
@@ -218,9 +233,10 @@ class ImageMagick extends Darkroom
     protected function save(string $file, array $options): string
     {
         if ($options['format'] !== null) {
-            $file = basename($file) . '.' . $options['format'];
+            $file = pathinfo($file, PATHINFO_DIRNAME) . '/' . pathinfo($file, PATHINFO_FILENAME) . '.' . $options['format'];
         }
-        return sprintf('-limit thread 1 "%s"', $file);
+
+        return escapeshellarg($file);
     }
 
     /**
@@ -232,6 +248,14 @@ class ImageMagick extends Darkroom
      */
     protected function strip(string $file, array $options): string
     {
-        return '-strip';
+        if (F::extension($file) === 'png') {
+            // ImageMagick does not support keeping ICC profiles while
+            // stripping other privacy- and security-related information,
+            // such as GPS data; so discard all color profiles for PNG files
+            // (tested with ImageMagick 7.0.11-14 Q16 x86_64 2021-05-31)
+            return '-strip';
+        }
+
+        return '';
     }
 }

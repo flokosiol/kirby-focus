@@ -1,6 +1,6 @@
 # Kirby Focus
 
-![Version](https://img.shields.io/badge/Version-3.0.8-blue.svg) ![License](https://img.shields.io/badge/License-MIT-green.svg) ![Kirby](https://img.shields.io/badge/Kirby-3.x-f0c674.svg)
+![Version](https://img.shields.io/badge/Version-3.1.0-blue.svg) ![License](https://img.shields.io/badge/License-MIT-green.svg) ![Kirby](https://img.shields.io/badge/Kirby-3.x-f0c674.svg)
 
 With this plugin for [Kirby CMS](http://getkirby.com) you can prevent the most important part of an image from being cropped when creating automated thumbs.
 
@@ -11,7 +11,7 @@ With this plugin for [Kirby CMS](http://getkirby.com) you can prevent the most i
 
 ## Requirements
 
-+ Kirby CMS, Version **3.x**
++ Kirby CMS, Version **3.6**
 + GD Library or ImageMagick
 
 ## Commercial Usage
