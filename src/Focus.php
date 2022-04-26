@@ -8,6 +8,18 @@ use Kirby\Image;
 class Focus {
 
     /**
+     * Read version number from composer.json
+     */
+    public static function version(): ?string
+    {
+        try {
+            return \Kirby\Data\Data::read(dirname(__DIR__) . '/composer.json')['version'] ?? null;
+        } catch (Throwable $e) {
+            throw new LogicException('The Focus version cannot be detected. The composer.json is probably missing or not readable.');
+        }
+    }
+
+    /**
      * Calculates the image ratio by dividing width / height
      */
     public static function ratio($width, $height)
