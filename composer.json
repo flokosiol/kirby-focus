@@ -11,7 +11,7 @@
         }
     ],
     "require": {
-        "getkirby/cms": "^3.6",
+        "getkirby/cms": ">=3.6",
         "getkirby/composer-installer": "^1.1"
     }
 }
