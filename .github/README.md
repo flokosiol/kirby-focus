@@ -4,26 +4,38 @@
 
 With this plugin for [Kirby CMS](http://getkirby.com) you can prevent the most important part of an image from being cropped when creating automated thumbs.
 
+---
+
+### ✨ A core feature of Kirby 4 ✨
+
+As of Kirby 4 this plugin has moved into core! Please find more infos on the [official Kirby feature page](https://getkirby.com/docs/guide/files/files#setting-a-focus-point). There is a documented way [how to migrate](https://github.com/flokosiol/kirby-focus/issues/75) the existing data of your project using regex search and replace. Thanks @FynnZW!
+
+**Thanks for your amazing feedback in the last years!**
+
+---
+
+## Kirby 3
+
 **The plugin does two things:**
 
 1. It provides a **custom field** that allows you to set a focus point. The focus point is saved to the meta data file.
 2. It provides a **new method** `focusCrop()`, which uses the focus point saved in the meta data file to crop an image in such a way that the focus point is in the center of the cropped image – or (if that's not possible) at least isn't cropped.
 
-## Requirements
+## ⚙️ Requirements
 
 + Kirby CMS, Version **3.6**
 + GD Library or ImageMagick
 
 Please check out the `kirby-3.5` branch, if you are using [Kirby 3.5 or a version even older](https://github.com/flokosiol/kirby-focus/tree/kirby-3.5) than that.
 
-## Commercial Usage
+## 💰 Commercial Usage
 
 This plugin is free but if you use it in a commercial project please consider to.
 
 + [make a donation](https://www.paypal.me/flokosiol/10) or
 + [buy a Kirby license using this affiliate link](https://a.paddle.com/v2/click/1129/36201?link=1170)
 
-## Installation
+## 🛠️ Installation
 
 ### Download
 
@@ -47,7 +59,7 @@ composer require flokosiol/focus
 git submodule add https://github.com/flokosiol/kirby-focus.git site/plugins/focus
 ```
 
-## Usage
+## 🖼️ Usage
 
 ### 1. Blueprint
 
@@ -215,7 +227,7 @@ In your template file you can use the defined srcset like this:
 ``` 
 
 
-## Extensions and implementations
+## ➕ Extensions and implementations
 
 ### Autofocus
 
@@ -229,13 +241,13 @@ In your template file you can use the defined srcset like this:
 
 [Kirby Colorist](https://github.com/fundevogel/kirby3-colorist) by @S1SYPHOS is fully compatible with Kirby Focus. This plugin is capable of image conversion to `AVIF`, `WebP` and some other formats, as well as resizing them.
 
-## License
+## 📋 License
 
 [MIT](https://github.com/flokosiol/kirby-focus/blob/master/LICENSE)
 
 It is discouraged to use this plugin in any project that promotes racism, sexism, homophobia, animal abuse, violence or any other form of hate speech.
 
-## Credits
+## 🙌 Credits
 
 Special thanks to all [contributors](https://github.com/flokosiol/kirby-focus/graphs/contributors)!
 	
