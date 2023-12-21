@@ -34,10 +34,7 @@ Please check out the `kirby-3.5` branch, if you are using [Kirby 3.5 or a versio
 
 ## 💰 Commercial Usage
 
-This plugin is free but if you use it in a commercial project please consider to.
-
-+ [make a donation](https://www.paypal.me/flokosiol/10) or
-+ [buy a Kirby license using this affiliate link](https://a.paddle.com/v2/click/1129/36201?link=1170)
+This plugin is free but if you use it in a commercial project please consider to [make a donation](https://www.paypal.me/flokosiol/10).
 
 ## 🛠️ Installation
 
