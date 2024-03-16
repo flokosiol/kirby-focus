@@ -9,7 +9,7 @@ With this plugin for [Kirby CMS](http://getkirby.com) you can prevent the most i
 > [!NOTE]
 > ✨ **A core feature of Kirby 4** ✨
 >
-> As of Kirby 4 this plugin has moved into core! Please find more infos on the [official Kirby feature page](https://getkirby.com/docs/guide/files/files#setting-a-focus-point).
+> As of Kirby 4 this plugin has moved into core! Please find more infos on the [official Kirby feature page](https://getkirby.com/docs/guide/files#setting-a-focus-point).
 > 
 > There is a documented way [how to migrate](https://github.com/flokosiol/kirby-focus/issues/75) the existing data of your project using regex search and replace. Thanks [@FynnZW](https://github.com/FynnZW)!  
 > And [@bnomei](https://github.com/bnomei) created a [Kirby CLI command](https://github.com/flokosiol/kirby-focus/issues/75#issuecomment-1834419319) to automate this process even further.
